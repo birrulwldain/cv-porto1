@@ -2,11 +2,12 @@
 import Hero from "./components/Hero";
 import About from "./components/About";
 import "./styles/main.scss";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello from App</h1>
+      <Navbar />
       <Hero />
       <About />
     </div>
