@@ -1,18 +1,51 @@
+import { useState, useEffect } from "react";
 import "../styles/_navbar.scss";
 
 function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
+
+  const handleToggle = () => setMenuOpen(!menuOpen);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["hero", "about", "skills", "projects", "contact"];
+      const scrollY = window.scrollY + 150;
+
+      for (let id of sections) {
+        const section = document.getElementById(id);
+        if (section && scrollY >= section.offsetTop) {
+          setActiveSection(id);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="navbar">
-      <div className="nav-content">
-        <h1 className="logo">Birrul</h1>
-        <ul className="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+    <header className="navbar">
+      <div className="logo">
+        <img src="/profile.jpg" alt="Profile" className="profile-pic" />
+        <span>Birrul Walidain</span>
       </div>
-    </nav>
+      <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
+        {["hero", "about", "skills", "projects", "contact"].map((section) => (
+          <a
+            key={section}
+            href={`#${section}`}
+            className={activeSection === section ? "active" : ""}
+            onClick={() => setMenuOpen(false)}
+          >
+            {section.charAt(0).toUpperCase() + section.slice(1)}
+          </a>
+        ))}
+      </nav>
+      <div className="menu-toggle" onClick={handleToggle}>
+        <div className={`hamburger ${menuOpen ? "open" : ""}`}></div>
+      </div>
+    </header>
   );
 }
 
