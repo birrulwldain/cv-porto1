@@ -1,37 +1,23 @@
-name: Add Issue to Project
+- name: Add issue to project (GraphQL)
+  uses: actions/github-script@v7
+  with:
+    github-token: ${{ secrets.GITHUB_TOKEN }}
+    script: |
+      const issueNodeId = context.payload.issue.node_id; // Wajib pakai ini
+      const projectId = "PVT_kwHOAvc3Js4A2O94"; // Ganti sesuai ID project V2 kamu
 
-on:
-  issues:
-    types: [opened]
-
-jobs:
-  add-to-project:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      issues: write
-
-    steps:
-      - name: Add issue to project (GraphQL)
-        uses: actions/github-script@v7
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const projectId = "PVT_kwHOAvc3Js4A2O94"; // Ganti dengan ID Project V2 kamu
-            const issueNodeId = context.payload.issue.node_id; // Ini penting, bukan ID biasa
-
-            await github.graphql(`
-              mutation($projectId: ID!, $contentId: ID!) {
-                addProjectV2ItemById(input: {
-                  projectId: $projectId,
-                  contentId: $contentId
-                }) {
-                  item {
-                    id
-                  }
-                }
-              }
-            `, {
-              projectId: projectId,
-              contentId: issueNodeId
-            });
+      await github.graphql(`
+        mutation($projectId: ID!, $contentId: ID!) {
+          addProjectV2ItemById(input: {
+            projectId: $projectId,
+            contentId: $contentId
+          }) {
+            item {
+              id
+            }
+          }
+        }
+      `, {
+        projectId: projectId,
+        contentId: issueNodeId
+      });
