@@ -1,7 +1,7 @@
 ---
 name: Laporan Bug
 about: Laporkan masalah atau error di proyek
-title: "**[BUG]** Judul masalah"
+title: "[BUG] Judul masalah"
 labels: ["bug"]
 assignees: birrulwldain
 ---
