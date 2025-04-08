@@ -1,0 +1,47 @@
+.projects {
+    padding: 6rem 2rem;
+    background-color: #0f0f0f;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .project-card {
+    background-color: #1a1a1a;
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    p {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      color: #bbb;
+    }
+  
+    a {
+      color: #61dafb;
+      text-decoration: none;
+      font-weight: 600;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  
+    &:hover {
+      transform: translateY(-5px);
+      background-color: #222;
+    }
+  }
+  
