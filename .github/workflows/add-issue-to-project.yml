@@ -1,4 +1,4 @@
-name: Add New Issues to GitHub Project
+name: Add Issue to Project
 
 on:
   issues:
@@ -7,20 +7,31 @@ on:
 jobs:
   add-to-project:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+
     steps:
-      - name: Add issue to GitHub Project
+      - name: Add issue to project (GraphQL)
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const projectId = "PVT_kwHOAvc3Js4A2O94"; 
-            const issueUrl = context.payload.issue.html_url;
+            const projectId = "PVT_kwHOAvc3Js4A2O94"; // Ganti dengan ID Project V2 kamu
+            const issueNodeId = context.payload.issue.node_id; // Ini penting, bukan ID biasa
 
-            await github.request('POST /projects/v2/projects/{project_id}/items', {
-              project_id: projectId,
-              content_type: "Issue",
-              content_url: issueUrl,
-              headers: {
-                'X-GitHub-Api-Version': '2022-11-28'
+            await github.graphql(`
+              mutation($projectId: ID!, $contentId: ID!) {
+                addProjectV2ItemById(input: {
+                  projectId: $projectId,
+                  contentId: $contentId
+                }) {
+                  item {
+                    id
+                  }
+                }
               }
+            `, {
+              projectId: projectId,
+              contentId: issueNodeId
             });
