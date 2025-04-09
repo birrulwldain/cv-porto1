@@ -2,10 +2,11 @@
 name: ✨ Fitur Baru / Task
 about: Tambahkan task atau fitur baru ke project
 labels: enhancement
-assignees: '@me'
+assignees: "@me"
 ---
 
 ### 🔍 Deskripsi
+
 <!-- Jelaskan task/proyek ini secara ringkas namun jelas -->
 
 Contoh:
@@ -14,6 +15,7 @@ Integrasi visualisasi hasil simulasi spektrum dengan antarmuka React.
 ---
 
 ### ✅ Checklist
+
 - [ ] Task 1
 - [ ] Task 2
 - [ ] Task 3
@@ -21,7 +23,9 @@ Integrasi visualisasi hasil simulasi spektrum dengan antarmuka React.
 ---
 
 ### 🌟 Definisi Selesai (Definition of Done)
+
 <!-- Jelaskan apa yang dimaksud dengan selesai -->
+
 - Data tampil di halaman Portofolio
 - UI responsif dan kompatibel di semua perangkat
 - Sudah melewati code review / test
@@ -29,6 +33,7 @@ Integrasi visualisasi hasil simulasi spektrum dengan antarmuka React.
 ---
 
 ### 🖊️ Catatan Tambahan
+
 <!-- Tambahkan referensi, link, dokumentasi pendukung -->
 
 - Referensi dokumen, artikel, atau endpoint API terkait

@@ -1,10 +1,10 @@
-@use './hero';
-@use './about';
-@use './skills';
-@use './projects';
-@use './contact';
-@use './footer';
-@use './navbar';
+@use "./hero";
+@use "./about";
+@use "./skills";
+@use "./projects";
+@use "./contact";
+@use "./footer";
+@use "./navbar";
 
 * {
   box-sizing: border-box;
@@ -20,7 +20,7 @@ body,
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #0f0f0f;
   color: #ffffff;
   overflow-x: hidden;

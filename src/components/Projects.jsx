@@ -5,17 +5,17 @@ function Projects() {
     {
       title: "Personal Portfolio",
       description: "Website portofolio pribadi built with React & SCSS.",
-      link: "#"
+      link: "#",
     },
     {
       title: "LaTeX Form Generator",
       description: "Form builder dengan preview PDF langsung.",
-      link: "#"
+      link: "#",
     },
     {
       title: "Weather App",
       description: "Aplikasi cuaca realtime menggunakan OpenWeather API.",
-      link: "#"
+      link: "#",
     },
   ];
 

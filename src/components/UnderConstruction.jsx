@@ -1,5 +1,6 @@
 // src/components/UnderConstruction.jsx
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
+
 import "../styles/_under-construction.scss";
 
 function UnderConstruction() {
@@ -18,7 +19,7 @@ function UnderConstruction() {
       </div>
 
       {/* Gambar & Teks */}
-      <motion.img
+      <Motion.img
         src="/einstein.jpg"
         alt="Einstein"
         className="einstein-img"
@@ -27,23 +28,23 @@ function UnderConstruction() {
         transition={{ duration: 0.8 }}
       />
 
-      <motion.h1
+      <Motion.h1
         className="headline"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
       >
-        Portofolio sedang dalam pengembangan
-      </motion.h1>
+        Portofolio sedang dalam pengembangan oleh Birrul Walidain
+      </Motion.h1>
 
-      <motion.p
+      <Motion.p
         className="subtext"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5, duration: 0.5 }}
       >
         Stay tuned! Situs ini akan segera hadir setelah S.Si
-      </motion.p>
+      </Motion.p>
     </main>
   );
 }

@@ -2,8 +2,16 @@ import "../styles/_skills.scss";
 
 function Skills() {
   const skills = [
-    "HTML", "CSS", "JavaScript", "React", "Node.js",
-    "SCSS", "Git", "Figma", "Tailwind", "Vite"
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Node.js",
+    "SCSS",
+    "Git",
+    "Figma",
+    "Tailwind",
+    "Vite",
   ];
 
   return (
