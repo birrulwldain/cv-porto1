@@ -1,13 +1,10 @@
-@use './hero';
-@use './about';
-@use './skills';
-@use './projects';
-@use './contact';
-@use './footer';
-@use './navbar';
-
-
-
+@use "./hero";
+@use "./about";
+@use "./skills";
+@use "./projects";
+@use "./contact";
+@use "./footer";
+@use "./navbar";
 
 * {
   box-sizing: border-box;
@@ -15,19 +12,24 @@
   padding: 0;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background-color: #0f0f0f;
   color: #ffffff;
-  scroll-behavior: smooth;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .App {
-  scroll-snap-type: y mandatory;
-  height: 100vh;
-  overflow-y: scroll;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
-html {
-    scroll-behavior: smooth;
-  }
