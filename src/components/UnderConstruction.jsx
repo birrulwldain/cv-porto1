@@ -8,7 +8,7 @@ function UnderConstruction() {
     <main className="under-construction">
       {/* Typography background bergerak */}
       <div className="background-pattern" aria-hidden="true">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(100)].map((_, i) => (
           <div
             key={i}
             className={`text-row ${i % 2 === 0 ? "scroll-left" : "scroll-right"}`}
