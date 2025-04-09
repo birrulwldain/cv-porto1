@@ -1,0 +1,75 @@
+// src/styles/_under-construction.scss
+@keyframes scrollLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
+}
+
+.under-construction {
+  position: relative;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1.5rem;
+  overflow: hidden;
+  text-align: center;
+  z-index: 1;
+
+  .background-pattern {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+
+    .text-row {
+      white-space: nowrap;
+      font-size: 4vw;
+      font-weight: 700;
+      line-height: 1.2;
+      opacity: 0.05;
+      color: #000;
+      font-family: 'Inter', sans-serif;
+      padding-left: 5%;
+      animation-duration: 40s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+
+      &.scroll-left {
+        animation-name: scrollLeft;
+      }
+      &.scroll-right {
+        animation-name: scrollRight;
+      }
+    }
+  }
+
+  .einstein-img {
+    max-width: 280px;
+    border-radius: 1rem;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    margin-bottom: 1.5rem;
+  }
+
+  .headline {
+    font-size: 2rem;
+    font-weight: 600;
+    z-index: 2;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtext {
+    font-size: 1rem;
+    z-index: 2;
+    color: #555;
+  }
+}

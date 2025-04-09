@@ -1,9 +1,11 @@
 import "../styles/_footer.scss";
 
 function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer">
-      <p>&copy; {new Date().getFullYear()} Birrul Walidain. All rights reserved.</p>
+      <p>&copy; {year} Birrul Walidain. All rights reserved.</p>
     </footer>
   );
 }
