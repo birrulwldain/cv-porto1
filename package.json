@@ -8,7 +8,6 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepare": "husky",
     "commit": "cz",
     "test": "echo 'No tests configured' && exit 0",
     "prepare": "husky install"
