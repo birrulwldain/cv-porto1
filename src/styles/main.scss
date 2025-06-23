@@ -3,7 +3,8 @@
 // Impor gaya untuk footer dari direktori 'style'
 @use './footer';
 @use './predictor';
-
+//tes
+@use './header';
 // Layout utama dengan Flexbox untuk memastikan footer menempel di bawah
 .app {
   min-height: 100vh;
