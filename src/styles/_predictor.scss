@@ -1,0 +1,68 @@
+// src/style/_predictor.scss
+
+// Variabel untuk konsistensi
+$primary-color: #007bff;
+$border-color: #ccc;
+$status-color: #555;
+
+// Gunakan konvensi penamaan seperti BEM (Block__Element--Modifier) untuk CSS global
+// agar lebih terstruktur dan menghindari konflik.
+
+.predictor {
+  // Ini adalah kontainer utama untuk seluruh komponen predictor
+  
+  &__title {
+    margin-top: 0;
+    color: #2c3e50;
+  }
+
+  &__description {
+    color: #666;
+    max-width: 700px;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+
+    button {
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      background-color: $primary-color;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  &__status {
+    margin-top: 1rem;
+    font-style: italic;
+    min-height: 1.2em;
+    color: $status-color;
+    transition: color 0.3s ease;
+  }
+
+  &__chart-container {
+    margin-top: 1.5rem;
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+}

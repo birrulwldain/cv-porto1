@@ -1,17 +1,14 @@
-import "../styles/_hero.scss";
+import React from 'react';
+import '../styles/_hero.scss';
 
-function Hero() {
+const Hero = () => {
   return (
-    <section className="hero-container">
-      <div className="hero-content">
-        <h1 className="hero-title">Hi, I’m Birrul</h1>
-        <p className="hero-subtitle">Creative Frontend Developer</p>
-        <a href="#about" className="hero-btn">
-          About Me
-        </a>
-      </div>
+    <section className="hero">
+      <h1>Creative Director Portfolio</h1>
+      <p>Showcasing expertise in Photography, Videography, and Brand Design</p>
+      <button onClick={() => window.location.href = '#portfolio'}>View Work</button>
     </section>
   );
-}
+};
 
 export default Hero;

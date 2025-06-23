@@ -1,40 +1,24 @@
-import "../styles/_projects.scss";
+import React from 'react';
+import '../styles/_projects.scss';
 
-function Projects() {
-  const projects = [
-    {
-      title: "Personal Portfolio",
-      description: "Website portofolio pribadi built with React & SCSS.",
-      link: "#",
-    },
-    {
-      title: "LaTeX Form Generator",
-      description: "Form builder dengan preview PDF langsung.",
-      link: "#",
-    },
-    {
-      title: "Weather App",
-      description: "Aplikasi cuaca realtime menggunakan OpenWeather API.",
-      link: "#",
-    },
+const Projects = () => {
+  const portfolioItems = [
+    { title: 'Photography', description: 'Capturing moments with artistic vision' },
+    { title: 'Videography', description: 'Dynamic storytelling through video' },
+    { title: 'Brand Design', description: 'Crafting unique visual identities' },
   ];
 
   return (
-    <section className="projects" id="projects">
-      <h2 className="section-title">Projects</h2>
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <div className="project-card" key={index}>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">
-              View Project
-            </a>
-          </div>
-        ))}
-      </div>
+    <section id="portfolio" className="projects">
+      <h2>Portfolio</h2>
+      {portfolioItems.map((item, index) => (
+        <div key={index} className="project-item">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </div>
+      ))}
     </section>
   );
-}
+};
 
 export default Projects;

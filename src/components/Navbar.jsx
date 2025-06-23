@@ -1,52 +1,28 @@
-import { useState, useEffect } from "react";
-import "../styles/_navbar.scss";
+import React, { useState } from 'react';
+import '../styles/_navbar.scss';
 
-function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
-
-  const handleToggle = () => setMenuOpen(!menuOpen);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ["hero", "about", "skills", "projects", "contact"];
-      const scrollY = window.scrollY + 150;
-
-      for (let id of sections) {
-        const section = document.getElementById(id);
-        if (section && scrollY >= section.offsetTop) {
-          setActiveSection(id);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="navbar">
-      <div className="logo">
-        <img src="/profile.jpg" alt="Profile" className="profile-pic" />
-        <span>Birrul Walidain</span>
+    <nav className="navbar">
+      <div className="logo-container">
+        <div className="logo">Logo</div>
+        <div className="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className={`menu ${isMenuOpen ? 'active' : ''}`}>
+          <ul className="nav-list">
+            <li><a href="#home" onClick={() => setIsMenuOpen(false)}>Home</a></li>
+            <li><a href="#portfolio" onClick={() => setIsMenuOpen(false)}>Portfolio</a></li>
+            <li><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
+          </ul>
+        </div>
       </div>
-      <nav className={`nav-links ${menuOpen ? "active" : ""}`}>
-        {["hero", "about", "skills", "projects", "contact"].map((section) => (
-          <a
-            key={section}
-            href={`#${section}`}
-            className={activeSection === section ? "active" : ""}
-            onClick={() => setMenuOpen(false)}
-          >
-            {section.charAt(0).toUpperCase() + section.slice(1)}
-          </a>
-        ))}
-      </nav>
-      <div className="menu-toggle" onClick={handleToggle}>
-        <div className={`hamburger ${menuOpen ? "open" : ""}`}></div>
-      </div>
-    </header>
+    </nav>
   );
-}
+};
 
 export default Navbar;
