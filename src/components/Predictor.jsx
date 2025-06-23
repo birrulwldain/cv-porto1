@@ -3,23 +3,15 @@
 import React, { useState } from 'react';
 import Plot from 'react-plotly.js';
 
-// Menggunakan gaya global yang diimpor dari App.jsx atau main.jsx
-// Jadi tidak perlu impor .scss di sini
-
 function Predictor() {
-  // State untuk menyimpan file yang di-upload
   const [file, setFile] = useState(null);
-  // State untuk menampilkan status (loading, error, success)
   const [status, setStatus] = useState('Silakan pilih file...');
-  // State untuk data plot Plotly
   const [plotData, setPlotData] = useState([]);
-  // State untuk layout plot Plotly
   const [plotLayout, setPlotLayout] = useState({
     title: 'Hasil Prediksi Akan Tampil di Sini',
     template: 'plotly_white'
   });
 
-  // Fungsi untuk menangani perubahan input file
   const handleFileChange = (event) => {
     if (event.target.files.length > 0) {
       setFile(event.target.files[0]);
@@ -27,54 +19,42 @@ function Predictor() {
     }
   };
 
-  // Fungsi untuk menangani klik tombol prediksi
   const handlePredict = async () => {
     if (!file) {
       setStatus('Error: Silakan pilih file terlebih dahulu!');
       return;
     }
-
     setStatus('Membaca file dan mengirim ke server...');
     const fileContent = await file.text();
     setStatus('Menunggu prediksi dari model...');
 
     try {
-      // --- PERBAIKAN DI SINI ---
-      // Ambil URL dasar dari environment variable
       const baseUrl = import.meta.env.VITE_WORKER_URL;
-      
-      // Pastikan URL dasar ada
       if (!baseUrl) {
         throw new Error("URL API (VITE_WORKER_URL) tidak ditemukan. Pastikan file .env sudah benar.");
       }
-
-      // Gabungkan URL dasar dengan endpoint prediksi yang benar
       const predictUrl = `${baseUrl}/predict`;
-      // --- AKHIR PERBAIKAN ---
 
-      const response = await fetch(predictUrl, { // Gunakan URL yang sudah lengkap
+      const response = await fetch(predictUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain' },
         body: fileContent
       });
 
-      // Dapatkan respons. Jika error, baca sebagai teks. Jika sukses, baca sebagai JSON.
       const responseBody = await response.text();
       if (!response.ok) {
-        // Coba parsing sebagai JSON jika mungkin, jika tidak tampilkan sebagai teks biasa
         let errorDetail = responseBody;
         try {
           const errorJson = JSON.parse(responseBody);
           errorDetail = errorJson.detail || JSON.stringify(errorJson);
-        } catch (e) {
-          // Biarkan errorDetail sebagai teks asli jika bukan JSON
+        } catch { // <-- PERBAIKAN: Hapus (_e) sepenuhnya
+          // Sekarang blok ini benar-benar hanya menangkap error tanpa membuat variabel.
         }
         throw new Error(`Server merespons dengan error: ${response.status} - ${errorDetail}`);
       }
 
       const results = JSON.parse(responseBody);
 
-      // Siapkan data untuk komponen Plotly
       const spectrumTrace = {
         x: results.wavelengths, y: results.spectrum_data, mode: 'lines',
         name: 'Spektrum Input', line: { color: 'gray' }
