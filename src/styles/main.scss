@@ -1,8 +1,8 @@
 // src/main.scss
 
 // Impor gaya untuk footer dari direktori 'style'
-@use './Footer';
-@use './Predictor';
+@use './footer';
+@use './predictor';
 
 // Layout utama dengan Flexbox untuk memastikan footer menempel di bawah
 .app {
