@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import Plot from 'react-plotly.js';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Komponen Ikon untuk UI
 const UploadIcon = () => (
