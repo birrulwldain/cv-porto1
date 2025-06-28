@@ -1,21 +1,44 @@
 // src/main.scss
 
-// Impor gaya untuk footer dari direktori 'style'
+// Impor variabel dan mixin global
+@use './variables';
+@use './mixins';
+
+// Impor gaya untuk komponen
 @use './footer';
 @use './predictor';
-//tes
+
+// Gaya dasar
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: variables.$font-family-sans-serif;
+  color: variables.$text-color;
+  background-color: variables.$background-color;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 // Layout utama dengan Flexbox untuk memastikan footer menempel di bawah
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f0f2f5; // Memberi sedikit warna pada latar belakang halaman
+  background-color: variables.$background-color;
 }
 
 // Area konten utama akan meregang mengisi semua ruang vertikal yang tersedia
 main {
   flex: 1;
+  padding: 20px; // Tambahkan padding agar konten tidak menempel di tepi
 }
 
 // Gaya untuk setiap 'kartu' section di halaman
@@ -23,10 +46,10 @@ section {
   width: 100%;
   padding: 50px 20px;
   background-color: #fff;
-  border-radius: 30px; // Radius simpel karena hanya akan ada satu section
+  border-radius: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  margin: 2rem auto; // Memberi jarak atas/bawah dan otomatis di tengah
-  max-width: 1200px; // Membatasi lebar section agar tidak terlalu lebar di layar besar
+  margin: 2rem auto;
+  max-width: 1200px;
 }
 
 // Kontainer di dalam section untuk membatasi lebar konten

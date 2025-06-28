@@ -1,52 +1,218 @@
 // src/style/_predictor.scss
 
-// Variabel untuk konsistensi
-$primary-color: #007bff;
-$border-color: #ccc;
-$status-color: #555;
-
-// Gunakan konvensi penamaan seperti BEM (Block__Element--Modifier) untuk CSS global
-// agar lebih terstruktur dan menghindari konflik.
+// Variabel dari _variables.scss
+@use '../styles/variables' as v;
+@use 'sass:color';
 
 .predictor {
-  // Ini adalah kontainer utama untuk seluruh komponen predictor
-  
+  padding: 2rem;
+  background-color: v.$background-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: v.$font-family-sans-serif;
+
+  &__header {
+    text-align: center;
+  }
+
   &__title {
-    margin-top: 0;
-    color: #2c3e50;
+    font-size: 2.2rem;
+    color: v.$text-color;
+    margin-bottom: 0.5rem;
   }
 
   &__description {
-    color: #666;
+    font-size: 1rem;
+    color: v.$secondary-color;
     max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
   }
 
-  &__controls {
+  &__main-tabs {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
+    justify-content: center;
     margin-bottom: 1.5rem;
-    flex-wrap: wrap;
+    border-bottom: 1px solid v.$border-color;
+  }
 
-    button {
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      font-weight: bold;
-      color: white;
-      background-color: $primary-color;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+  &__main-tab-button {
+    background-color: transparent;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: v.$secondary-color;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
 
+    &:hover {
+      color: v.$primary-color;
+      border-color: color.adjust(v.$primary-color, $lightness: 20%);
+    }
+
+    &.active {
+      color: v.$primary-color;
+      border-color: v.$primary-color;
+    }
+  }
+
+  &__card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__input-toggle {
+    display: flex;
+    width: 100%;
+    border: 1px solid v.$border-color;
+    border-radius: 8px;
+    overflow: hidden; // Ensures inner buttons respect border-radius
+    margin-bottom: 1rem; // Add some space below the toggle
+  }
+
+  &__toggle-button {
+    flex: 1; // Distribute space equally
+    background-color: v.$background-color;
+    border: none;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: v.$text-color;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: color.adjust(v.$background-color, $lightness: -5%); // Slightly darker on hover
+    }
+
+    &.active {
+      background-color: v.$primary-color;
+      color: #fff;
       &:hover {
-        background-color: darken($primary-color, 10%);
+        background-color: color.adjust(v.$primary-color, $lightness: -10%);
       }
+    }
 
-      &:active {
-        transform: scale(0.98);
+    // Add a border between buttons
+    &:first-child {
+      border-right: 1px solid v.$border-color;
+    }
+  }
+
+  
+
+  &__dropzone {
+    border: 2px dashed v.$border-color;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+
+    &:hover {
+      border-color: v.$primary-color;
+      background-color: color.adjust(v.$primary-color, $lightness: 40%);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      color: v.$secondary-color;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: v.$secondary-color;
+      font-size: 0.95rem;
+    }
+  }
+
+  &__param-input-group {
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-size: 0.9rem;
+      color: v.$text-color;
+      font-weight: 600;
+    }
+
+    .predictor__param-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid v.$border-color;
+      border-radius: 5px;
+      font-family: v.$font-family-sans-serif;
+      font-size: 1rem;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+
+      &:focus {
+        outline: none;
+        border-color: v.$primary-color;
+        box-shadow: 0 0 0 3px rgba(v.$primary-color, 0.2);
       }
+    }
+  }
+
+  &__file-input {
+    display: none; // Sembunyikan input file asli
+  }
+
+  &__file-label {
+    background-color: v.$primary-color;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: color.adjust(v.$primary-color, $lightness: -10%);
+    }
+  }
+
+  &__button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: v.$primary-color;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
+
+    &:hover {
+      background-color: color.adjust(v.$primary-color, $lightness: -10%);
+    }
+
+    &:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
     }
   }
 
@@ -54,15 +220,65 @@ $status-color: #555;
     margin-top: 1rem;
     font-style: italic;
     min-height: 1.2em;
-    color: $status-color;
-    transition: color 0.3s ease;
+    color: v.$text-color;
+    text-align: center;
+  }
+
+  &__error {
+    background-color: #ffebee; // light red
+    color: #c62828; // dark red
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 500;
+    border: 1px solid #ef9a9a;
   }
 
   &__chart-container {
-    margin-top: 1.5rem;
-    border: 1px solid $border-color;
+    position: relative;
+    min-height: 600px; // Tinggi minimum untuk plot
+    border: 1px solid v.$border-color;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__plot-placeholder {
+    text-align: center;
+    color: v.$secondary-color;
+    font-style: italic;
+    padding: 2rem;
+  }
+
+  .loading-spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+    .spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left-color: v.$primary-color;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+    }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 }
