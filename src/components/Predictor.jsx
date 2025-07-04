@@ -1,6 +1,8 @@
+
+
 import React, { useState, useCallback } from 'react';
 import Plot from 'react-plotly.js';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion'; // eslint-disable-line no-unused-vars
 
 // Komponen Ikon untuk UI
 const UploadIcon = () => (
@@ -31,9 +33,13 @@ function Predictor() {
     }
   });
 
-  const [prominenceInput, setProminenceInput] = useState(''); // New state for prominence input
-  const [rawFileContent, setRawFileContent] = useState(''); // New state to store raw file content
-  const [activeMainTab, setActiveMainTab] = useState('input'); // State for main tabs
+  const [prominenceInput, setProminenceInput] = useState('');
+  const [rawFileContent, setRawFileContent] = useState('');
+  const [applyAucNormalization, setApplyAucNormalization] = useState(false);
+  const [applyBaselineCorrection, setApplyBaselineCorrection] = useState(false);
+  const [lam, setLam] = useState(100000); // New state for lam
+  const [p, setP] = useState(0.01);     // New state for p
+  const [niter, setNiter] = useState(10);   // New state for niter
 
   // Helper function to parse .asc content
   const parseAscContent = (content) => {
@@ -85,7 +91,6 @@ function Predictor() {
             hovermode: 'x unified',
             legend: { x: 1, xanchor: 'right', y: 1 }
           }));
-          setActiveMainTab('plot'); // Switch to plot tab for preview
           setStatus('File berhasil diunggah. Pratinjau sinyal ditampilkan.');
         } else {
           setError('File .asc tidak mengandung data yang valid.');
@@ -105,7 +110,7 @@ function Predictor() {
       setFile(null);
       setStatus('Silakan pilih atau seret file .asc ke sini.');
     }
-  }, [setFile, setStatus, setError, setIsLoading, setRawFileContent, setPlotData, setPlotLayout, setActiveMainTab]);
+  }, [setFile, setStatus, setError, setIsLoading, setRawFileContent, setPlotData, setPlotLayout]);
 
   const onDragOver = useCallback((event) => {
     event.preventDefault();
@@ -124,27 +129,60 @@ function Predictor() {
       setError('Silakan pilih file terlebih dahulu atau file tidak dapat dibaca!');
       return;
     }
+
+    // Client-side validation for prominence
+    if (prominenceInput !== '' && isNaN(Number(prominenceInput))) {
+      setError('Prominence harus berupa angka yang valid.');
+      return;
+    }
+
+    // Client-side validation for ALS parameters if baseline correction is applied
+    if (applyBaselineCorrection) {
+      if (isNaN(parseFloat(lam)) || parseFloat(lam) <= 0) {
+        setError('Lambda (lam) harus berupa angka positif yang valid.');
+        return;
+      }
+      if (isNaN(parseFloat(p)) || parseFloat(p) < 0 || parseFloat(p) > 1) {
+        setError('Asymmetry (p) harus berupa angka antara 0 dan 1.');
+        return;
+      }
+      if (isNaN(parseInt(niter, 10)) || parseInt(niter, 10) <= 0) {
+        setError('Iterations (niter) harus berupa bilangan bulat positif yang valid.');
+        return;
+      }
+    }
+
     setIsLoading(true);
     setStatus('Memproses file...');
     setError(null);
 
     try {
-      const baseUrl = import.meta.env.VITE_WORKER_URL;
+      const baseUrl = import.meta.env.VITE_API_URL; // Changed to VITE_API_URL
       if (!baseUrl) {
-        throw new Error("URL API (VITE_WORKER_URL) tidak ditemukan.");
+        throw new Error("URL API (VITE_API_URL) tidak ditemukan.");
       }
 
       const prominenceValue = prominenceInput === '' ? null : Number(prominenceInput);
 
-      const predictUrl = `${baseUrl}/predict_with_prominence`; // Changed endpoint
+      const predictUrl = `${baseUrl}/predict_with_prominence`;
+
+      const requestBody = {
+        asc_content: rawFileContent,
+        prominence: prominenceValue,
+        apply_baseline_correction: applyBaselineCorrection,
+        apply_auc_normalization: applyAucNormalization,
+      };
+
+      if (applyBaselineCorrection) {
+        requestBody.lam = parseFloat(lam);
+        requestBody.p = parseFloat(p);
+        requestBody.niter = parseInt(niter, 10);
+      }
 
       const response = await fetch(predictUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }, // Changed header
-        body: JSON.stringify({ // Changed body
-          asc_content: rawFileContent,
-          prominence: prominenceValue
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestBody),
       });
 
       const responseBody = await response.text();
@@ -160,27 +198,43 @@ function Predictor() {
       }
 
       const results = JSON.parse(responseBody);
-      const spectrumTrace = {
-        x: results.wavelengths, y: results.spectrum_data, mode: 'lines',
-        name: 'Spektrum Input', line: { color: '#4a5568' }
-      };
-      const peakTrace = {
-        x: results.peak_wavelengths, y: results.peak_intensities, mode: 'markers',
-        name: 'Puncak Terdeteksi', marker: { color: '#e53e3e', size: 8, symbol: 'x' }
-      };
+      const newPlotData = [];
+
+      if (applyBaselineCorrection) {
+        // If baseline correction is applied, only show the processed spectrum
+        newPlotData.push({
+          x: results.wavelengths, y: results.spectrum_data, mode: 'lines',
+          name: 'Processed Spectrum', line: { color: '#2d3748' }
+        });
+      } else {
+        // If no baseline correction, show original spectrum
+        if (results.original_spectrum) {
+          newPlotData.push({
+            x: results.wavelengths, y: results.original_spectrum, mode: 'lines',
+            name: 'Original Spectrum', line: { color: '#4a5568' }
+          });
+        }
+      }
+
+      // Peaks (always show peaks on the currently displayed spectrum)
+      if (results.peak_wavelengths && results.peak_wavelengths.length > 0) {
+        newPlotData.push({
+          x: results.peak_wavelengths, y: results.peak_intensities, mode: 'markers',
+          name: 'Puncak Terdeteksi', marker: { color: '#38a169', size: 8, symbol: 'circle' }
+        });
+      }
       
-      setPlotData([spectrumTrace, peakTrace]);
+      setPlotData(newPlotData);
       setPlotLayout({
-        title: `Hasil Prediksi untuk: ${file.name}`,
+        title: `Hasil Analisis untuk: ${file.name}`,
         xaxis: { title: 'Panjang Gelombang (nm)', gridcolor: '#e2e8f0' },
-        yaxis: { title: 'Intensitas Normalisasi', gridcolor: '#e2e8f0' },
+        yaxis: { title: 'Intensitas', gridcolor: '#e2e8f0' },
         annotations: results.annotations,
         template: 'plotly_white',
         hovermode: 'x unified',
         legend: { x: 1, xanchor: 'right', y: 1 }
       });
-      setStatus('Prediksi berhasil!');
-      setActiveMainTab('plot'); // Switch to plot tab on success
+      setStatus('Analisis berhasil!');
     } catch (err) {
       setError(err.message);
       console.error(err);
@@ -191,106 +245,145 @@ function Predictor() {
 
   return (
     <div className="predictor">
-      <div className="predictor__header">
-        <h1 className="predictor__title">Spectral Element Predictor</h1>
-        <p className="predictor__description">
-          Unggah file spektrum (.asc) untuk dianalisis oleh model AI. Sistem akan mendeteksi puncak signifikan dan menampilkan elemen yang teridentifikasi.
-        </p>
-      </div>
-      
-      <div className="predictor__main-tabs">
-        <button 
-          className={`predictor__main-tab-button ${activeMainTab === 'input' ? 'active' : ''}`}
-          onClick={() => setActiveMainTab('input')}
-        >
-          Input File
-        </button>
-        <button 
-          className={`predictor__main-tab-button ${activeMainTab === 'plot' ? 'active' : ''}`}
-          onClick={() => setActiveMainTab('plot')}
-        >
-          Hasil Plot
-        </button>
-      </div>
-
-      {activeMainTab === 'input' && (
-        <div className="predictor__card">
-          <div 
-            className="predictor__dropzone"
-            onDragOver={onDragOver}
-            onDrop={onDrop}
-          >
-            <UploadIcon />
-            <input 
-              type="file" 
-              onChange={(e) => handleFileChange(e.target.files[0])} 
-              accept=".asc" 
-              className="predictor__file-input"
-              id="file-upload"
-            />
-            <label htmlFor="file-upload" className="predictor__file-label">
-              {file ? 'Ganti File' : 'Pilih File'}
-            </label>
-            <p>{status}</p>
-          </div>
-
-          {/* New prominence input field */}
-          <div className="predictor__param-input-group">
-            <label htmlFor="prominence-input">Prominence (opsional):</label>
-            <input
-              type="number"
-              id="prominence-input"
-              className="predictor__param-input"
-              placeholder="Contoh: 0.05"
-              value={prominenceInput}
-              onChange={(e) => setProminenceInput(e.target.value)}
-              step="any" // Allow decimal inputs
-            />
-          </div>
-
-          <AnimatePresence>
-            {error && (
-              <motion.div 
-                className="predictor__error"
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-              >
-                {error}
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          <button 
-            onClick={handlePredict} 
-            disabled={isLoading || !file}
-            className="predictor__button"
-          >
-            {isLoading ? 'Menganalisis...' : 'Prediksi Elemen'}
-          </button>
+      <div className="predictor__top-controls"> {/* NEW wrapper for header and input panel */}
+        <div className="predictor__header">
+          <h1 className="predictor__title">Deep Learning-Powered Spectroscopic Data Interpreter</h1>
+          <p className="predictor__description">
+            Unggah file spektrum (.asc) untuk dianalisis oleh model Deep Learning. Sistem akan mendeteksi puncak signifikan dan menampilkan elemen yang teridentifikasi.
+          </p>
         </div>
-      )}
-      
-      {activeMainTab === 'plot' && (
-        <div className="predictor__chart-container">
-          <AnimatePresence>
-            {isLoading && <LoadingSpinner />}
-          </AnimatePresence>
-          {plotData.length === 0 && !isLoading ? (
-            <div className="predictor__plot-placeholder">
-              <p>Grafik hasil prediksi akan muncul di sini.</p>
+        
+        <div className="predictor__input-panel"> {/* Input controls */}
+          <div className="predictor__input-controls"> 
+            <div 
+              className="predictor__dropzone"
+              onDragOver={onDragOver}
+              onDrop={onDrop}
+            >
+              <UploadIcon />
+              <input 
+                type="file" 
+                onChange={(e) => handleFileChange(e.target.files[0])} 
+                accept=".asc" 
+                className="predictor__file-input"
+                id="file-upload"
+              />
+              <label htmlFor="file-upload" className="predictor__file-label">
+                {file ? 'Ganti File' : 'Pilih File'}
+              </label>
+              <p className="predictor__status">{status}</p>
             </div>
-          ) : (
-            <Plot
-              data={plotData}
-              layout={plotLayout}
-              useResizeHandler={true}
-              style={{ width: '100%', height: '100%' }}
-              config={{ responsive: true }}
-            />
-          )}
-        </div>
-      )}
+
+            <div className="predictor__param-input-group">
+              <label htmlFor="prominence-input">Prominence (opsional):</label>
+              <input
+                type="number"
+                id="prominence-input"
+                className="predictor__param-input"
+                placeholder="Contoh: 0.05"
+                value={prominenceInput}
+                onChange={(e) => setProminenceInput(e.target.value)}
+                step="any"
+              />
+            </div>
+
+            <div className="predictor__param-input-group predictor__checkbox-group">
+              <input
+                type="checkbox"
+                id="baseline-correction"
+                checked={applyBaselineCorrection}
+                onChange={(e) => setApplyBaselineCorrection(e.target.checked)}
+              />
+              <label htmlFor="baseline-correction">Koreksi Baseline (ALS)</label>
+            </div>
+
+            {applyBaselineCorrection && (
+              <div className="predictor__als-params">
+                <div className="predictor__param-input-group">
+                  <label htmlFor="lam">Lambda (lam):</label>
+                  <input
+                    type="number"
+                    id="lam"
+                    value={lam}
+                    onChange={(e) => setLam(e.target.value)}
+                    step="1000"
+                  />
+                </div>
+                <div className="predictor__param-input-group">
+                  <label htmlFor="p">Asymmetry (p):</label>
+                  <input
+                    type="number"
+                    id="p"
+                    value={p}
+                    onChange={(e) => setP(e.target.value)}
+                    step="0.001"
+                  />
+                </div>
+                <div className="predictor__param-input-group">
+                  <label htmlFor="niter">Iterations (niter):</label>
+                  <input
+                    type="number"
+                    id="niter"
+                    value={niter}
+                    onChange={(e) => setNiter(e.target.value)}
+                    step="1"
+                  />
+                </div>
+              </div>
+            )}
+
+            <div className="predictor__param-input-group predictor__checkbox-group">
+              <input
+                type="checkbox"
+                id="auc-normalization"
+                checked={applyAucNormalization}
+                onChange={(e) => setApplyAucNormalization(e.target.checked)}
+              />
+              <label htmlFor="auc-normalization">Normalisasi AUC=1</label>
+            </div>
+
+            <AnimatePresence>
+              {error && (
+                <motion.div 
+                  className="predictor__error"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                >
+                  {error}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <button 
+              onClick={handlePredict} 
+              disabled={isLoading || !file}
+              className="predictor__button"
+            >
+              {isLoading ? 'Menganalisis...' : 'Prediksi Elemen'}
+            </button>
+          </div> {/* End of predictor__input-controls */}
+        </div> {/* End of predictor__input-panel */}
+      </div> {/* End of predictor__top-controls */}
+
+      <div className="predictor__chart-container">
+        <AnimatePresence>
+          {isLoading && <LoadingSpinner />}
+        </AnimatePresence>
+        {plotData.length === 0 && !isLoading ? (
+          <div className="predictor__plot-placeholder">
+            <p>Grafik hasil prediksi akan muncul di sini.</p>
+          </div>
+        ) : (
+          <Plot
+            data={plotData}
+            layout={plotLayout}
+            useResizeHandler={true}
+            style={{ width: '100%', height: '100%' }}
+            config={{ responsive: true }}
+          />
+        )}
+      </div>
     </div>
   );
 }
