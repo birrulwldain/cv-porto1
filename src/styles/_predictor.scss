@@ -1,320 +1,37 @@
-// src/style/_predictor.scss
+/* Styles for Predictor Component - Minimal styles after MUI integration */
 
-// Variabel dari _variables.scss
-@use '../styles/variables' as v;
-@use 'sass:color';
+/* Keep only very specific overrides or custom elements not covered by MUI */
 
-.predictor {
-  padding: 2rem;
-  background-color: v.$background-color;
+/* Example: If you need to override a specific MUI component's internal layout */
+/* .MuiPaper-root.MuiPaper-elevation0 { 
+  box-shadow: none; 
+} */
+
+/* Custom styles for the ALS fieldset if not fully handled by MUI */
+.als-fieldset {
+  border: 1px solid #e0e0e0; // Re-add border if Paper elevation 0 is not enough
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  font-family: v.$font-family-sans-serif;
+  padding: 1.5rem;
+  margin-top: 0.5rem;
+  background-color: #f8fafc; // Light background for the fieldset
 
-  &__header {
-    text-align: left; /* Align text to the left */
-    flex: 1; /* Allow header to grow */
-    min-width: 250px; /* Minimum width for header */
-    max-width: 400px; /* Max width for header */
-  }
-
-  &__title {
-    font-size: 2.2rem;
-    color: v.$text-color;
-    margin-bottom: 0.5rem;
-  }
-
-  &__description {
-    font-size: 1rem;
-    color: v.$secondary-color;
-    max-width: 700px;
-    margin: 0; /* Remove auto margin */
-    line-height: 1.6;
-  }
-
-  &__top-controls {
-    display: flex;
-    flex-direction: row; /* Arrange header and input panel horizontally */
-    gap: 2rem; /* Space between header and input panel */
-    align-items: flex-start; /* Align items to the top */
-    justify-content: space-between; /* Distribute space */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-
-    @media (max-width: 992px) {
-      flex-direction: column; /* Stack vertically on smaller screens */
-      align-items: center; /* Center items when stacked */
-      .predictor__header {
-        text-align: center;
-        margin-bottom: 1.5rem;
-      }
-    }
-  }
-
-  &__content-wrapper {
-    /* This is no longer needed as predictor__top-controls handles the layout */
-    /* Keeping it here for reference, but it will be removed */
-    display: none; /* Hide it */
-  }
-
-  &__chart-container {
-    flex: none; /* No flex growth */
-    width: 100%; /* Take full width */
-    min-height: 700px; /* Adjusted minimum height for plot */
-    border: 1px solid v.$border-color;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  &__input-panel {
-    flex: 2; /* Allow input panel to take more space */
-    min-width: 400px; /* Minimum width for input panel */
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 1rem 2rem; /* Adjusted padding for a more compact horizontal bar */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    display: flex; /* Make it a flex container */
-    flex-direction: row; /* Always arrange items horizontally */
-    flex-wrap: wrap; /* Allow wrapping if content is too wide */
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Align items vertically in the center */
-    gap: 1rem; /* Reduced gap for compactness */
-
-    .predictor__param-input-group {
-      flex: 1; /* Distribute space among input groups */
-      min-width: 180px; /* Adjusted minimum width for each input group */
-      max-width: 250px; /* Adjusted maximum width for each input group */
-      margin-top: 0; /* Remove top margin */
-    }
-    .predictor__dropzone, .predictor__button {
-      flex-basis: auto; /* Let content determine width */
-      width: auto; /* Override 100% width */
-      min-width: 150px; /* Minimum width for buttons/dropzone */
-    }
-    .predictor__dropzone {
-      padding: 1rem; /* Reduced padding for dropzone */
-      min-height: 80px; /* Reduced min-height for dropzone */
-      .icon {
-        width: 32px; /* Smaller icon */
-        height: 32px;
-        margin-bottom: 0.5rem;
-      }
-      p {
-        font-size: 0.85rem;
-      }
-    }
-    .predictor__file-label {
-      padding: 0.5rem 1rem; /* Smaller padding for file label */
-      margin-top: 0.5rem;
-    }
-    .predictor__button {
-      padding: 0.6rem 1.5rem; /* Smaller padding for button */
-      font-size: 1rem;
-    }
-    .predictor__checkbox-group {
-      margin-top: 0; /* Remove top margin */
-    }
-    .predictor__als-params {
-      width: 100%; /* Still full width for ALS params when expanded */
-      padding: 0.5rem;
-      margin-top: 0.5rem;
-    }
-  }
-
-  &__input-controls {
-    /* This div is now inside predictor__input-panel and will inherit its flex properties */
-    /* No need for explicit flex-direction here, as parent handles it */
-    /* Remove width: 100% as parent handles it */
-    gap: 1rem; /* Keep gap */
-    display: contents; /* Make children directly participate in parent's flex layout */
-  }
-
-  &__als-params {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid v.$border-color;
-    border-radius: 8px;
-    background-color: color.adjust(v.$background-color, $lightness: -3%);
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  &__checkbox-group {
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.5rem;
-
-    input[type="checkbox"] {
-      width: auto;
-      margin-right: 0.5rem;
-    }
-  }
-
-  &__dropzone {
-    border: 2px dashed v.$border-color;
-    border-radius: 8px;
-    padding: 2rem;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 150px;
-
-    &:hover {
-      border-color: v.$primary-color;
-      background-color: color.adjust(v.$primary-color, $lightness: 40%);
-    }
-
-    .icon {
-      width: 48px;
-      height: 48px;
-      color: v.$secondary-color;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      color: v.$secondary-color;
-      font-size: 0.95rem;
-    }
-  }
-
-  &__param-input-group {
-    width: 100%;
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    label {
-      font-size: 0.9rem;
-      color: v.$text-color;
-      font-weight: 600;
-    }
-
-    .predictor__param-input {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid v.$border-color;
-      border-radius: 5px;
-      font-family: v.$font-family-sans-serif;
-      font-size: 1rem;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
-
-      &:focus {
-        outline: none;
-        border-color: v.$primary-color;
-        box-shadow: 0 0 0 3px rgba(v.$primary-color, 0.2);
-      }
-    }
-  }
-
-  &__file-input {
-    display: none; // Sembunyikan input file asli
-  }
-
-  &__file-label {
-    background-color: v.$primary-color;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-    margin-top: 1rem;
-
-    &:hover {
-      background-color: color.adjust(v.$primary-color, $lightness: -10%);
-    }
-  }
-
-  &__button {
-    padding: 0.8rem 2rem;
+  legend {
+    padding: 0 0.5rem;
+    font-weight: 600;
     font-size: 1.1rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: v.$primary-color;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    width: 100%;
-
-    &:hover {
-      background-color: color.adjust(v.$primary-color, $lightness: -10%);
-    }
-
-    &:disabled {
-      background-color: #cccccc;
-      cursor: not-allowed;
-    }
-  }
-
-  &__status {
-    margin-top: 1rem;
-    font-style: italic;
-    min-height: 1.2em;
-    color: v.$text-color; /* Keep original color for general status */
-    text-align: center;
-    font-weight: bold; /* Make it bold */
-  }
-
-  &__error {
-    background-color: #ffebee; // light red
-    color: #c62828; // dark red
-    padding: 0.75rem 1rem;
-    border-radius: 5px;
-    margin-top: 1rem;
-    text-align: center;
-    font-weight: 500;
-    border: 1px solid #ef9a9a;
-  }
-
-  &__plot-placeholder {
-    text-align: center;
-    color: v.$secondary-color;
-    font-style: italic;
-    padding: 2rem;
-  }
-
-  .loading-spinner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 10;
-
-    .spinner {
-      border: 4px solid rgba(0, 0, 0, 0.1);
-      border-left-color: v.$primary-color;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-    }
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    color: #2d3748;
   }
 }
+
+.als-fieldset__description {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+/* Custom styles for the plot container if not fully handled by MUI */
+/* .predictor__chart-container { 
+  height: 550px; 
+  min-height: 400px; 
+} */

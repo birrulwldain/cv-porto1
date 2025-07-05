@@ -4,57 +4,24 @@
 @use './variables';
 @use './mixins';
 
-// Impor gaya untuk komponen
-@use './footer';
-@use './predictor';
-@use './info-block'; // Tambahkan ini
+// Impor gaya untuk komponen (hanya yang masih relevan dan belum dimigrasi ke MUI)
+// @use './footer'; // Pertahankan jika footer masih menggunakan SCSS kustom
+// @use './about'; // Hapus jika About.jsx sudah sepenuhnya dimigrasi ke MUI
 
-// Gaya dasar
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+// Gaya dasar minimal - sebagian besar ditangani oleh MUI CssBaseline
 body {
-  font-family: variables.$font-family-sans-serif;
-  color: variables.$text-color;
-  background-color: variables.$background-color;
+  font-family: variables.$font-family-sans-serif; // Pertahankan font family jika ingin kustom
   overflow-x: hidden;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-// Layout utama dengan Flexbox untuk memastikan footer menempel di bawah
+// Gaya untuk elemen yang belum dimigrasi ke MUI
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: variables.$background-color;
 }
 
-// Area konten utama akan meregang mengisi semua ruang vertikal yang tersedia
 main {
   flex: 1;
-  padding: 20px; // Tambahkan padding agar konten tidak menempel di tepi
-}
-
-// Gaya untuk setiap 'kartu' section di halaman
-section {
-  width: 100%;
-  padding: 50px 20px;
-  background-color: #fff;
-  border-radius: 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-  margin: 2rem auto;
-  max-width: 1600px; /* Increased max-width for more space */
-}
-
-// Kontainer di dalam section untuk membatasi lebar konten
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
+  padding: 20px; // Pertahankan padding jika diperlukan
 }
