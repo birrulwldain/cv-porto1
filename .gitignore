@@ -29,3 +29,7 @@ dist/
 backend/
 
 .env
+
+# Do not track nested repos (keep local only)
+/predictor-api/
+/skripsi-21/
