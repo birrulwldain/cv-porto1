@@ -1,30 +1,21 @@
-// src/App.jsx
-
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Predictor from './components/Predictor';
-import InfoBlock from './components/InfoBlock'; // Import InfoBlock
-import Footer from './components/Footer';
-import './styles/main.scss'; // Impor file gaya global utama
 
 function App() {
-  return (
-    <div className="app">
-      <Router>
-        <main>
-          <Routes>
-            <Route path="/" element={
-              <>
-                <Predictor />
-                <InfoBlock /> {/* Add InfoBlock here */}
-              </>
-            } />
-          </Routes>
-        </main>
-        <Footer />
-      </Router>
-    </div>
-  );
+  // Check if we're on the main page or the predictor page
+  const isPredictor = window.location.pathname.includes('/predictor');
+  
+  // Only render the Predictor component when on the predictor page
+  if (isPredictor) {
+    return (
+      <div className="predictor-page">
+        <Predictor onBack={() => window.location.href = '/'} />
+      </div>
+    );
+  }
+  
+  // For the main page, return null since we're using the static HTML
+  return null;
 }
 
 export default App;

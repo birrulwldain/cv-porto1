@@ -1,10 +1,46 @@
-10	OPEN	New Task		2025-04-08T13:15:16Z
-9	OPEN	[EPIC] Deployment		2025-04-08T13:09:22Z
-8	OPEN	[EPIC] Kontak & Profil		2025-04-08T13:09:21Z
-7	OPEN	Proyek LSTM		2025-04-08T13:09:20Z
-6	OPEN	Skripsi: Simulasi Spektrum		2025-04-08T13:09:20Z
-5	OPEN	[EPIC] Portofolio Proyek		2025-04-08T13:09:18Z
-4	OPEN	[EPIC] Halaman Tentang Saya		2025-04-08T13:09:17Z
-3	OPEN	Navigasi dan Routing		2025-04-08T13:09:16Z
-2	OPEN	Landing Page		2025-04-08T13:09:15Z
-1	OPEN	[EPIC] Struktur & Navigasi		2025-04-08T13:09:14Z
+# Issue List
+
+This file documents known issues and planned improvements for the Spectroscopy Dashboard application.
+
+## Active Issues
+
+1. **Backend API Connection**: Ensure the API server is running at http://localhost:8000 before using the application.
+   - Status: In progress
+   - Priority: High
+   
+2. **Validation Results**: Sometimes validation results may not display properly when processing large files.
+   - Status: To be fixed
+   - Priority: Medium
+
+3. **Mobile Responsiveness**: Interface needs improvement on very small screens.
+   - Status: To be fixed
+   - Priority: Low
+
+## Planned Improvements
+
+1. **Add batch processing capability** for multiple .asc files.
+   - Status: Planned
+   - Priority: Medium
+
+2. **Implement user authentication** to save analysis history.
+   - Status: Planned
+   - Priority: Low
+
+3. **Add export options** for results in multiple formats (PNG, CSV).
+   - Status: Planned
+   - Priority: Medium
+
+4. **Improve visualization options** with more chart types and customization.
+   - Status: Planned
+   - Priority: Medium
+
+## Completed
+
+1. **Fixed baseline correction algorithm** to handle edge cases.
+   - Completed: July 3, 2025
+
+2. **Added Excel report download** for validation results.
+   - Completed: July 1, 2025
+
+3. **Improved peak detection parameters** with custom prominence and distance settings.
+   - Completed: June 28, 2025

@@ -1,38 +1,20 @@
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogActions, IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+import { Modal as AntdModal, Button } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 const Modal = ({ isOpen, onClose, title, children, actions }) => {
   return (
-    <Dialog
+    <AntdModal
+      title={title}
       open={isOpen}
-      onClose={onClose}
-      aria-labelledby="modal-title"
-      maxWidth="sm"
-      fullWidth
+      onCancel={onClose}
+      footer={actions} // Ant Design Modal uses 'footer' for action buttons
+      closeIcon={onClose ? <Button type="text" icon={<CloseOutlined />} onClick={onClose} /> : null} // Custom close icon
+      width={600} // Equivalent to maxWidth="sm" in MUI, adjust as needed
+      centered // Centers the modal on the screen
     >
-      <DialogTitle id="modal-title">
-        {title}
-        {onClose ? (
-          <IconButton
-            aria-label="close"
-            onClick={onClose}
-            sx={{
-              position: 'absolute',
-              right: 8,
-              top: 8,
-              color: (theme) => theme.palette.grey[500],
-            }}
-          >
-            <CloseIcon />
-          </IconButton>
-        ) : null}
-      </DialogTitle>
-      <DialogContent dividers>
-        {children}
-      </DialogContent>
-      {actions && <DialogActions>{actions}</DialogActions>}
-    </Dialog>
+      {children}
+    </AntdModal>
   );
 };
 

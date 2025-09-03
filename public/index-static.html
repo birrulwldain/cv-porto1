@@ -474,7 +474,6 @@
                 <li><a href="#" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="/skripsi/index.html">Skripsi</a></li>
                 <li><a href="/predictor">Spectroscopy Dashboard</a></li>
             </ul>
         </nav>
@@ -487,7 +486,6 @@
             <div class="button-group">
                 <a href="#about" class="button button-primary">About Me</a>
                 <a href="#projects" class="button button-outline">View Projects</a>
-                <a href="/skripsi/index.html" class="button button-outline">Skripsi</a>
                 <a href="/predictor" class="button button-secondary">Spectroscopy Dashboard</a>
             </div>
         </div>
@@ -603,15 +601,5 @@
             });
         });
     </script>
-    
-        <!-- Root div for React components (hidden on main, shown on /predictor via script) -->
-        <div id="root" style="display: none;"></div>
-        <script>
-            (function(){
-                var onPredictor = window.location.pathname.indexOf('/predictor') === 0;
-                var root = document.getElementById('root');
-                if(root){ root.style.display = onPredictor ? 'block' : 'none'; }
-            })();
-        </script>
 </body>
 </html>
