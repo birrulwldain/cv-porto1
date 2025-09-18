@@ -106,6 +106,68 @@
         nav a.active::after, nav a:hover::after {
             width: 100%;
         }
+
+        /* Mobile-first navbar */
+        .menu-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 42px;
+            height: 42px;
+            margin-left: auto;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 0.5rem;
+            background: transparent;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+        .menu-toggle:hover { background: rgba(0,0,0,0.03); }
+        .menu-toggle:focus { outline: 2px solid var(--secondary); outline-offset: 2px; }
+        .menu-toggle .bar {
+            width: 20px;
+            height: 2px;
+            background: currentColor;
+            border-radius: 1px;
+        }
+        .menu-toggle .bar + .bar { margin-top: 4px; }
+
+        nav .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0.75rem;
+            display: none; /* collapsed by default on small screens */
+            flex-direction: column;
+            gap: 0.75rem;
+            position: absolute;
+            top: 100%;
+            left: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            z-index: 110;
+        }
+        header.open nav .nav-links { display: flex; }
+
+        /* Desktop overrides */
+        @media (min-width: 768px) {
+            .menu-toggle { display: none; }
+            nav .nav-links {
+                position: static;
+                display: flex !important;
+                flex-direction: row;
+                align-items: center;
+                gap: 2rem;
+                padding: 0;
+                background: transparent;
+                border: 0;
+                box-shadow: none;
+            }
+        }
         
         .hero {
             min-height: 100vh;
@@ -469,8 +531,13 @@
 <body>
     <header id="main-header">
         <div class="logo">Birrul Walidain</div>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <nav>
-            <ul>
+            <ul id="primary-nav" class="nav-links">
                 <li><a href="#" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -602,6 +669,35 @@
                 }
             });
         });
+
+        // Mobile nav toggle
+        (function(){
+            const headerEl = document.getElementById('main-header');
+            const toggleBtn = document.querySelector('.menu-toggle');
+            const navLinks = document.getElementById('primary-nav');
+            if (!headerEl || !toggleBtn || !navLinks) return;
+
+            toggleBtn.addEventListener('click', function(){
+                const isOpen = headerEl.classList.toggle('open');
+                toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+
+            // Close menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', function(){
+                    headerEl.classList.remove('open');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Close menu when resizing to desktop
+            window.addEventListener('resize', function(){
+                if (window.innerWidth >= 768) {
+                    headerEl.classList.remove('open');
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
     </script>
     
         <!-- Root div for React components (hidden on main, shown on /predictor via script) -->
