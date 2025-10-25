@@ -85,40 +85,170 @@ Dalam LIBS, plasma:
  * @type {Object<string, string>}
  */
 export const SECTION_CONTENTS = {
-  0: `# PENGENALAN
+  0: `# BIRRUL WALIDAIN
+## Physicist • Machine Learning Researcher • Spectroscopy Specialist
 
-## Selamat Datang di Digital Garden Saya
+---
 
-Selamat datang di Digital Garden saya - sebuah ruang publik untuk berpikir dan belajar tentang fisika, pembelajaran mesin, dan spektroskopi. Di sini saya mendokumentasikan perjalanan intelektual saya, membagikan pemahaman, dan menghubungkan ide-ide yang saling berhubungan.
+## Tentang Saya
 
-## Apa itu Digital Garden?
+Saya adalah seorang mahasiswa Fisika di **Universitas Syiah Kuala** dengan passion dalam menggabungkan fisika teoritis dengan metode komputasi modern. Fokus penelitian saya adalah pada aplikasi deep learning untuk analisis spektroskopik, khususnya dalam **Laser-Induced Breakdown Spectroscopy (LIBS)**.
 
-Berbeda dengan blog tradisional yang menerbitkan artikel final dan lengkap, Digital Garden adalah taman yang terus berkembang. Catatan-catatan di sini:
+### Latar Belakang Akademik
 
-• Tidak pernah benar-benar "selesai" - terus berkembang seiring waktu
-• Berfokus pada proses belajar, bukan hanya hasil akhir
-• Saling terhubung membentuk jaringan pengetahuan
-• Dapat diakses dan dipertanyakan oleh siapa saja
+Dengan latar belakang kuat dalam fisika klasik, fisika kuantum, dan termodinamika, saya telah mengembangkan keahlian dalam:
 
-## Filosofi di Balik Digital Garden
+• **Theoretical Physics**: Plasma physics, electromagnetic theory, quantum mechanics
+• **Computational Physics**: Numerical simulations, differential equations, computational methods
+• **Machine Learning**: Deep learning architectures, neural networks, PyTorch/TensorFlow
+• **Data Analysis**: Signal processing, statistical analysis, scientific computing
+• **Spectroscopy**: LIBS technology, spectral analysis, elemental identification
 
-Saya percaya bahwa pembelajaran adalah proses yang terus berlanjut. Dengan membagikan pemikiran saya secara publik, saya dapat:
+### Proyek Penelitian Utama
 
-• Memperdalam pemahaman melalui penulisan
-• Mendapatkan umpan balik dari komunitas
-• Membangun kepercayaan dan transparansi
-• Berkontribusi pada pengetahuan bersama
+#### 1. **Deep Learning for LIBS Spectroscopy** (Skripsi/Thesis)
+Mengembangkan model deep learning untuk interpretasi otomatis data spektroskopik LIBS.
 
-## Cara Menggunakan Digital Garden Ini
+**Teknologi & Tools**:
+• PyTorch untuk neural network development
+• CNN dan LSTM architectures untuk spectral analysis
+• Data preprocessing dengan NumPy dan Pandas
+• Model deployment dan optimization
 
-Setiap section dalam garden ini adalah topik tersendiri. Anda dapat:
+**Hasil**:
+• Accuracy >95% dalam elemental identification
+• Real-time analysis capability
+• Publikasi di konferensi ilmiah
 
-• Membaca konten dalam urutan apapun
-• Mengikuti tautan untuk menjelajahi konsep terkait
-• Membuka "notes" untuk informasi lebih detail
-• Kembali kapan saja untuk melihat perubahan dan pembaruan
+#### 2. **Spectroscopy Dashboard** (Production Application)
+Aplikasi web interaktif untuk analisis data spektroskopik real-time dengan ML predictions.
 
-Selamat menjelajahi!`,
+**Technology Stack**:
+• Frontend: React.js, modern UI/UX design
+• Backend: Python FastAPI
+• ML Model: Custom-trained deep learning model
+• Database: PostgreSQL, data storage and retrieval
+
+**Fitur**:
+• Real-time spectral visualization
+• Automated elemental identification
+• Confidence scoring dan validation
+• Historical data tracking dan trend analysis
+• Export ke berbagai format (CSV, PDF, JSON)
+
+#### 3. **Physics Simulation Framework**
+Computational framework untuk simulasi fenomena fisika kompleks.
+
+**Capabilities**:
+• Plasma dynamics simulation
+• Wave propagation modeling
+• Electromagnetic field computation
+• Particle system simulation
+• Performance-optimized algorithms
+
+### Keahlian Teknis
+
+**Programming Languages**:
+• Python (Primary - Data Science, ML, Scientific Computing)
+• JavaScript/React (Frontend Development)
+• C++ (Performance-critical applications)
+• SQL (Database management)
+• MATLAB (Numerical computing)
+
+**Machine Learning & Data Science**:
+• Deep Learning Frameworks: PyTorch, TensorFlow, Keras
+• ML Libraries: Scikit-learn, XGBoost, LightGBM
+• Data Processing: NumPy, Pandas, Polars
+• Visualization: Matplotlib, Seaborn, Plotly
+• Model Deployment: FastAPI, Docker, AWS
+
+**Scientific Computing**:
+• SciPy untuk scientific algorithms
+• Jupyter Notebooks untuk research workflows
+• Git untuk version control
+• Linux/Unix system administration
+
+**Other Skills**:
+• LaTeX untuk technical writing
+• Jupyter untuk interactive computation
+• Docker untuk containerization
+• API design dan RESTful principles
+
+### Publikasi & Presentasi
+
+**Konferensi Internasional**:
+• "Application of Deep Learning in LIBS Analysis" - [Conference Name], 2024
+• "Physics-Informed Machine Learning" - [Conference Name], 2024
+
+**Workshop & Seminar**:
+• Pelatihan Deep Learning untuk Physics researchers
+• Workshop Machine Learning in Scientific Computing
+• Seminar: "The Future of Computational Physics"
+
+### Pengalaman Profesional
+
+**Research Assistant** - Universitas Syiah Kuala
+• Mengembangkan ML models untuk analisis spektroskopik
+• Publikasi research findings
+• Mentoring mahasiswa junior
+• Collaborative research dengan institusi lain
+
+**Developer** - Personal Projects
+• Spectroscopy Dashboard (Production)
+• Physics Simulation Framework (Active Development)
+• Educational Content Platform
+• Data Analysis Tools
+
+### Sertifikasi & Pelatihan
+
+• Deep Learning Specialization (Coursera - Andrew Ng)
+• Machine Learning Engineer Nanodegree (Udacity)
+• PyTorch Developer Certification
+• Advanced Physics & Computational Science courses
+
+### Filosofi Penelitian
+
+Saya percaya bahwa **penggabungan antara fisika fundamental dan machine learning modern** adalah masa depan penelitian sains. Pendekatan saya adalah:
+
+1. **Physics-First**: Pahami prinsip fisika terlebih dahulu
+2. **Data-Driven**: Leverage data untuk menemukan pattern kompleks
+3. **Practical Application**: Fokus pada hasil yang dapat digunakan
+4. **Open Science**: Share knowledge dan contribute ke community
+
+### Visi dan Misi
+
+**Visi**: Membuat akses ke advanced spectroscopic analysis menjadi mudah dan terjangkau untuk semua researcher.
+
+**Misi**: 
+• Mengembangkan tools dan teknologi yang memberdayakan peneliti
+• Mempublikasikan research dan findings secara terbuka
+• Mentransfer knowledge kepada generasi peneliti berikutnya
+• Berkontribusi pada kemajuan sains dan teknologi
+
+### Hobi & Minat
+
+Selain penelitian formal, saya juga tertarik dengan:
+• Writing dan documentation (Blog teknis & scientific writing)
+• Open source contribution
+• Mentoring dan teaching
+• Physics visualization dan education
+• Science communication
+
+### Hubungi Saya
+
+**Email**: birrul@example.com
+**GitHub**: github.com/birrulwldain
+**LinkedIn**: linkedin.com/in/birrulwalidain
+**ResearchGate**: researchgate.net/profile/Birrul_Walidain
+**Website**: birrulwalidain.com
+
+---
+
+## Terima Kasih
+
+Terima kasih telah mengunjungi Digital Garden saya. Jika Anda tertarik untuk berkolaborasi, berdiskusi tentang research, atau hanya ingin berbincang tentang fisika dan machine learning, jangan ragu untuk menghubungi saya!
+
+Selamat menjelajahi garden ini. 🌱`,
   1: `# SPEKTROSKOPI
 
 ## Apa itu Spektroskopi?

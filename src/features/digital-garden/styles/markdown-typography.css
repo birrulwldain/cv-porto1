@@ -13,12 +13,12 @@
 .md-h1 {
   font-size: var(--font-size-4xl);
   font-weight: var(--font-weight-bold);
-  margin: var(--spacing-2xl) 0 var(--spacing-lg) 0;
+  margin: 0.5rem 0 0.5rem 0;
   color: #000000;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-bottom: 1px solid #000000;
-  padding-bottom: var(--spacing-lg);
+  padding-bottom: 0.5rem;
   line-height: 1.2;
   font-family: var(--font-primary);
 }
@@ -27,7 +27,7 @@
 .md-h2 {
   font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
-  margin: var(--spacing-xl) 0 var(--spacing-md) 0;
+  margin: 0.4rem 0 0.2rem 0;
   color: #333333;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -41,7 +41,7 @@
 .md-h3 {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
-  margin: var(--spacing-lg) 0 var(--spacing-md) 0;
+  margin: 0.3rem 0 0.2rem 0;
   color: #333333;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -54,7 +54,7 @@
 .md-h4 {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
-  margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+  margin: 0.2rem 0 0.1rem 0;
   color: #333333;
   text-transform: capitalize;
   line-height: 1.4;
@@ -68,8 +68,8 @@
 .md-p {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
-  line-height: 1.6;
-  margin: var(--spacing-md) 0;
+  line-height: 1.4;
+  margin: 0.3rem 0;
   color: #333333;
   font-family: var(--font-primary);
 }
@@ -82,8 +82,8 @@
 .md-dash {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
-  line-height: 1.6;
-  margin: var(--spacing-sm) 0;
+  line-height: 1.4;
+  margin: 0.2rem 0;
   margin-left: var(--spacing-lg);
   color: #333333;
   position: relative;
@@ -103,8 +103,8 @@
 .md-ordered {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
-  line-height: 1.6;
-  margin: var(--spacing-sm) 0;
+  line-height: 1.4;
+  margin: 0.2rem 0;
   margin-left: var(--spacing-lg);
   color: #333333;
 }
@@ -116,7 +116,7 @@
 .md-hr {
   border: none;
   border-top: 1px solid #DDDDDD;
-  margin: var(--spacing-2xl) 0;
+  margin: 0.3rem 0;
   height: 1px;
 }
 
@@ -125,5 +125,5 @@
    ============================================================================ */
 
 .md-spacer {
-  height: var(--spacing-md);
+  height: 0.2rem;
 }

@@ -115,7 +115,7 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: var(--spacing-lg);
+  padding: 0.75rem;
   background-color: #FFFFFF;
   
   /* Custom scrollbar untuk vertical scroll */
@@ -157,6 +157,54 @@
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
+}
+
+/* ============================================================================
+   SECTION HEADER - Logo dan Profile untuk section pertama
+   ============================================================================ */
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #EEEEEE;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.section-header__logo {
+  flex-shrink: 0;
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-header__logo svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.section-header__profile {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #333333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-header__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ============================================================================
