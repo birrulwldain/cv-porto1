@@ -8,6 +8,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        .em-wave-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+        .hero {
+            position: relative;
+            min-height: 220px;
+            background: transparent;
+            overflow: visible;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -719,13 +735,58 @@
                 <li><a href="#" class="active">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="/public/garden/">Digital Garden</a></li>
                 <li><a href="/skripsi/index.html">Skripsi</a></li>
                 <li><a href="/predictor/index.html">Spectroscopy Dashboard</a></li>
             </ul>
         </nav>
     </header>
     
-    <section class="hero">
+    <div class="logo">
+        <svg viewBox="0 0 60 25" xmlns="http://www.w3.org/2000/svg">
+            <g fill="#333333">
+                <!-- First line: birrul -->
+                ...existing code...
+            </g>
+            <g fill="#333333" transform="translate(0, 14)">
+                <!-- Second line: wldain -->
+                ...existing code...
+            </g>
+        </svg>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+    <nav>
+        <ul id="primary-nav" class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="/skripsi/index.html">Skripsi</a></li>
+            <li><a href="/predictor/index.html">Spectroscopy Dashboard</a></li>
+        </ul>
+    </nav>
+</header>
+        <div style="position:absolute;bottom:0;left:0;width:100%;height:120px;z-index:1;pointer-events:none;">
+            <svg class="em-wave-bg" viewBox="0 0 1440 120" width="100%" height="120">
+                <defs>
+                    <linearGradient id="emwave-gradient" x1="0" y1="0" x2="1" y2="0">
+                        <stop offset="0%" stop-color="#FF8C00"/>
+                        <stop offset="100%" stop-color="#FF4500"/>
+                    </linearGradient>
+                </defs>
+                <path id="emwave-path" d="M0,80 Q180,160 360,80 T720,80 T1080,80 T1440,80 V120 H0 Z" fill="url(#emwave-gradient)" opacity="0.7">
+                    <animate attributeName="d" dur="4s" repeatCount="indefinite"
+                        values="M0,80 Q180,160 360,80 T720,80 T1080,80 T1440,80 V120 H0 Z;
+                                M0,80 Q180,40 360,120 T720,40 T1080,120 T1440,80 V120 H0 Z;
+                                M0,80 Q180,160 360,80 T720,80 T1080,80 T1440,80 V120 H0 Z"/>
+                </path>
+            </svg>
+        </div>
+            </path>
+        </svg>
         <div class="hero-content">
             <h1>BIRRUL WALIDAIN</h1>
             <p>EXPLORING THE INTERSECTION OF PHYSICS & MACHINE LEARNING — THEORETICAL PHYSICS • PLASMA DYNAMICS • SPECTROSCOPY • DEEP LEARNING</p>

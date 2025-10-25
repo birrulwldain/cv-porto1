@@ -1,0 +1,41 @@
+/**
+ * @file features/digital-garden/styles/scroll-indicator.css
+ * @description Styles untuk scroll progress indicator
+ */
+
+@import './variables.css';
+
+/* ============================================================================
+   SCROLL INDICATOR - Auto-hiding progress bar
+   ============================================================================ */
+
+.scroll-indicator {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--scroll-indicator-height);
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--easing-ease-in-out);
+  z-index: var(--z-index-fixed);
+  pointer-events: none;
+}
+
+/* Active state - when scrolling */
+.scroll-indicator--active {
+  opacity: 1;
+}
+
+/* Progress bar */
+.scroll-indicator__progress {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-primary-light)
+  );
+  transition: width var(--duration-fast) var(--easing-ease-out);
+  border-radius: 2px;
+}

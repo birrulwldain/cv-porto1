@@ -1,0 +1,191 @@
+/**
+ * @file features/digital-garden/styles/note-card.css
+ * @description Styles untuk note cards dengan BEM methodology
+ */
+
+@import './variables.css';
+
+/* ============================================================================
+   NOTE CARD - Individual note container
+   ============================================================================ */
+
+.note-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  transition: all var(--duration-base) var(--easing-ease-in-out);
+}
+
+.note-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-color: var(--color-primary);
+}
+
+/* ============================================================================
+   NOTE CARD HEADER
+   ============================================================================ */
+
+.note-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-lg);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-light) 100%
+  );
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================================
+   NOTE CARD TITLE
+   ============================================================================ */
+
+.note-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex: 1;
+}
+
+/* ============================================================================
+   NOTE CARD CLOSE BUTTON
+   ============================================================================ */
+
+.note-card__close {
+  background: transparent;
+  border: none;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  cursor: pointer;
+  padding: 0;
+  margin-left: var(--spacing-md);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  
+  transition: all var(--duration-fast) var(--easing-ease-in-out);
+  
+  font-family: var(--font-primary);
+}
+
+.note-card__close:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.note-card__close:active {
+  transform: scale(0.95);
+}
+
+/* ============================================================================
+   NOTE CARD CONTENT
+   ============================================================================ */
+
+.note-card__content {
+  padding: var(--spacing-lg);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  color: var(--color-gray-600);
+  max-height: 300px;
+  overflow-y: auto;
+  
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-gray-200);
+}
+
+.note-card__content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.note-card__content::-webkit-scrollbar-track {
+  background-color: var(--color-gray-200);
+}
+
+.note-card__content::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* ============================================================================
+   NOTE CARD LINKS (footer)
+   ============================================================================ */
+
+.note-card__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--color-gray-300);
+  background-color: var(--color-gray-100);
+}
+
+/* ============================================================================
+   NOTE CARD LINK (individual link button)
+   ============================================================================ */
+
+.note-card__link {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-align: left;
+  border-radius: 4px;
+  cursor: pointer;
+  
+  transition: all var(--duration-fast) var(--easing-ease-in-out);
+  
+  font-family: var(--font-primary);
+  text-transform: capitalize;
+  letter-spacing: 0.03em;
+}
+
+.note-card__link:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: translateX(4px);
+}
+
+.note-card__link:active {
+  transform: scale(0.98);
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .note-card {
+    border-radius: 6px;
+  }
+  
+  .note-card__header {
+    padding: var(--spacing-md);
+  }
+  
+  .note-card__title {
+    font-size: var(--font-size-base);
+  }
+  
+  .note-card__content {
+    padding: var(--spacing-md);
+    font-size: var(--font-size-xs);
+  }
+  
+  .note-card__links {
+    padding: var(--spacing-sm);
+  }
+}

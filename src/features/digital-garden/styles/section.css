@@ -1,0 +1,9 @@
+/**
+ * @file features/digital-garden/styles/section.css
+ * @description Styles untuk individual section
+ */
+
+@import './variables.css';
+
+/* Already imported in digital-garden-container.css */
+/* This file exists for organization purposes */

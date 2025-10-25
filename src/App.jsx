@@ -1,20 +1,38 @@
+/**
+ * @file src/App.jsx
+ * @description Main application router dengan route-based code splitting
+ */
+
 import React from 'react';
+import { DigitalGardenContainer } from './features/digital-garden/components';
 import Predictor from './components/Predictor';
 
+/**
+ * Main App component dengan route detection
+ * Menggunakan pathname untuk determine component mana yang render
+ */
 function App() {
-  // Check if we're on the main page or the predictor page
-  const isPredictor = window.location.pathname.includes('/predictor');
-  
-  // Only render the Predictor component when on the predictor page
-  if (isPredictor) {
+  const pathname = window.location.pathname;
+
+  // Route: Digital Garden
+  if (pathname.includes('/garden')) {
     return (
-      <div className="predictor-page">
-        <Predictor onBack={() => window.location.href = '/'} />
+      <div className="app-page app-page--garden">
+        <DigitalGardenContainer />
       </div>
     );
   }
-  
-  // For the main page, return null since we're using the static HTML
+
+  // Route: Predictor
+  if (pathname.includes('/predictor')) {
+    return (
+      <div className="app-page app-page--predictor">
+        <Predictor onBack={() => { window.location.href = '/'; }} />
+      </div>
+    );
+  }
+
+  // Default: Home page (rendered via static HTML)
   return null;
 }
 

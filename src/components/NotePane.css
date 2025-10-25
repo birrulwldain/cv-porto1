@@ -1,0 +1,179 @@
+/* SpecialGothic Font Face */
+@font-face {
+  font-family: 'SpecialGothic';
+  src: url('/fonts/SpecialGothic-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SpecialGothic';
+  src: url('/fonts/SpecialGothic-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* NotePane Component Styling */
+
+.note-pane {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  max-width: 600px;
+  height: 100%;
+  background: #FAFAFA;
+  border-left: 3px solid #FF4500;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  font-family: 'SpecialGothic', sans-serif;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.note-pane:hover {
+  box-shadow: -2px 0 12px rgba(255, 69, 0, 0.2);
+  border-left-width: 4px;
+}
+
+.note-pane.active {
+  background: #FFFFFF;
+  border-left-color: #FF8C00;
+}
+
+/* Header */
+.note-pane-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  border-bottom: 1px solid #E5E5E5;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, rgba(255, 69, 0, 0.05) 0%, transparent 100%);
+}
+
+.note-pane-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  word-break: break-word;
+  flex: 1;
+}
+
+.note-pane-close {
+  background: transparent;
+  border: 2px solid #333;
+  color: #333;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+.note-pane-close:hover {
+  background: #FF4500;
+  border-color: #FF4500;
+  color: #FFF;
+  transform: scale(1.05);
+}
+
+.note-pane-close:active {
+  transform: scale(0.95);
+}
+
+/* Content */
+.note-pane-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.note-pane-content p {
+  margin: 0 0 1rem 0;
+}
+
+.note-pane-content a {
+  color: #FF4500;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  border-bottom: 2px solid #FF4500;
+  transition: all 0.2s ease;
+}
+
+.note-pane-content a:hover {
+  color: #FF8C00;
+  border-bottom-color: #FF8C00;
+}
+
+/* Footer */
+.note-pane-footer {
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid #E5E5E5;
+  font-size: 0.8rem;
+  color: #999;
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.note-id {
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Scrollbar styling */
+.note-pane-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.note-pane-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.note-pane-content::-webkit-scrollbar-thumb {
+  background: #CCC;
+  border-radius: 3px;
+}
+
+.note-pane-content::-webkit-scrollbar-thumb:hover {
+  background: #FF4500;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .note-pane {
+    min-width: 300px;
+    max-width: 500px;
+  }
+
+  .note-pane-header {
+    padding: 1rem;
+  }
+
+  .note-pane-content {
+    padding: 1rem;
+  }
+
+  .note-pane-title {
+    font-size: 1rem;
+  }
+
+  .note-pane-close {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+}

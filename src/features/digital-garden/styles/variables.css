@@ -1,0 +1,98 @@
+/**
+ * @file features/digital-garden/styles/variables.css
+ * @description Design tokens dan CSS variables untuk Digital Garden
+ */
+
+:root {
+  /* ========================================================================
+     COLORS
+     ======================================================================== */
+  
+  /* Primary */
+  --color-primary: #FF4500;
+  --color-primary-light: #FF6B1A;
+  
+  /* Neutral */
+  --color-white: #FAFAFA;
+  --color-black: #333333;
+  --color-gray-100: #F5F5F5;
+  --color-gray-200: #EEEEEE;
+  --color-gray-300: #DDDDDD;
+  --color-gray-600: #555555;
+  --color-gray-900: #222222;
+  
+  /* Background */
+  --color-bg-dark: #000000;
+  --color-bg-light: #FAFAFA;
+  
+  /* ========================================================================
+     TYPOGRAPHY
+     ======================================================================== */
+  
+  --font-primary: 'SpecialGothic', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  
+  /* ========================================================================
+     SPACING
+     ======================================================================== */
+  
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* ========================================================================
+     LAYOUT
+     ======================================================================== */
+  
+  --section-width: 30vw;
+  --section-height: 100vh;
+  
+  --scroll-indicator-height: 3px;
+  
+  /* ========================================================================
+     ANIMATIONS
+     ======================================================================== */
+  
+  --duration-fast: 150ms;
+  --duration-base: 200ms;
+  --duration-slow: 300ms;
+  
+  --easing-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --easing-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --easing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* ========================================================================
+     Z-INDEX
+     ======================================================================== */
+  
+  --z-index-dropdown: 10;
+  --z-index-sticky: 20;
+  --z-index-fixed: 30;
+  --z-index-modal-backdrop: 40;
+  --z-index-modal: 50;
+  --z-index-tooltip: 60;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  :root {
+    --section-width: 100vw;
+  }
+}

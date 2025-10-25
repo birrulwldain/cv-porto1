@@ -26,7 +26,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, 'index.html'),
-        predictor: path.resolve(__dirname, 'predictor/index.html')
+        predictor: path.resolve(__dirname, 'predictor/index.html'),
+        garden: path.resolve(__dirname, 'public/garden/index.html')
       }
     }
   }
