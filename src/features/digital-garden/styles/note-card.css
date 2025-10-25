@@ -1,6 +1,6 @@
 /**
  * @file features/digital-garden/styles/note-card.css
- * @description Styles untuk note cards dengan BEM methodology
+ * @description Styles untuk note cards - minimal clean design
  */
 
 @import './variables.css';
@@ -10,18 +10,18 @@
    ============================================================================ */
 
 .note-card {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
-  border-radius: 8px;
+  background-color: #FFFFFF;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   
   transition: all var(--duration-base) var(--easing-ease-in-out);
 }
 
 .note-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  border-color: #999999;
 }
 
 /* ============================================================================
@@ -33,12 +33,8 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--spacing-lg);
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-light) 100%
-  );
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  background: #F5F5F5;
+  border-bottom: 1px solid #DDDDDD;
 }
 
 /* ============================================================================
@@ -48,10 +44,10 @@
 .note-card__title {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  color: #000000;
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
   flex: 1;
 }
 
@@ -63,7 +59,7 @@
   background: transparent;
   border: none;
   font-size: var(--font-size-xl);
-  color: var(--color-white);
+  color: #666666;
   cursor: pointer;
   padding: 0;
   margin-left: var(--spacing-md);
@@ -80,8 +76,9 @@
 }
 
 .note-card__close:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #EEEEEE;
   transform: scale(1.1);
+  color: #000000;
 }
 
 .note-card__close:active {
@@ -96,13 +93,13 @@
   padding: var(--spacing-lg);
   font-size: var(--font-size-sm);
   line-height: 1.6;
-  color: var(--color-gray-600);
+  color: #333333;
   max-height: 300px;
   overflow-y: auto;
   
   /* Custom scrollbar */
   scrollbar-width: thin;
-  scrollbar-color: var(--color-primary) var(--color-gray-200);
+  scrollbar-color: #CCCCCC #FFFFFF;
 }
 
 .note-card__content::-webkit-scrollbar {
@@ -110,11 +107,11 @@
 }
 
 .note-card__content::-webkit-scrollbar-track {
-  background-color: var(--color-gray-200);
+  background-color: #FFFFFF;
 }
 
 .note-card__content::-webkit-scrollbar-thumb {
-  background-color: var(--color-primary);
+  background-color: #CCCCCC;
   border-radius: 2px;
 }
 
@@ -127,8 +124,8 @@
   flex-direction: column;
   gap: var(--spacing-sm);
   padding: var(--spacing-md);
-  border-top: 1px solid var(--color-gray-300);
-  background-color: var(--color-gray-100);
+  border-top: 1px solid #DDDDDD;
+  background-color: #F9F9F9;
 }
 
 /* ============================================================================
@@ -136,56 +133,30 @@
    ============================================================================ */
 
 .note-card__link {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  color: #333333;
   padding: var(--spacing-sm) var(--spacing-md);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   text-align: left;
-  border-radius: 4px;
+  border-radius: 3px;
   cursor: pointer;
   
   transition: all var(--duration-fast) var(--easing-ease-in-out);
   
   font-family: var(--font-primary);
   text-transform: capitalize;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
 .note-card__link:hover {
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: #333333;
+  color: #FFFFFF;
+  border-color: #333333;
   transform: translateX(4px);
 }
 
 .note-card__link:active {
   transform: scale(0.98);
-}
-
-/* ============================================================================
-   RESPONSIVE
-   ============================================================================ */
-
-@media (max-width: 768px) {
-  .note-card {
-    border-radius: 6px;
-  }
-  
-  .note-card__header {
-    padding: var(--spacing-md);
-  }
-  
-  .note-card__title {
-    font-size: var(--font-size-base);
-  }
-  
-  .note-card__content {
-    padding: var(--spacing-md);
-    font-size: var(--font-size-xs);
-  }
-  
-  .note-card__links {
-    padding: var(--spacing-sm);
-  }
 }
