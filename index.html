@@ -875,115 +875,16 @@
         <p class="institution">Universitas Syiah Kuala • Physics Department</p>
     </footer>
 
-    <div id="root" style="display: none;"></div>
+    <div id="root"></div>
 
     <script>
-        // Interactive gradient that follows cursor (lightweight version)
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let currentX = mouseX;
-        let currentY = mouseY;
+        // Hide static HTML content - React app handles all pages
+        document.body.innerHTML = '<div id="root"></div>';
         
-        const gradientBlob = document.getElementById('gradientBlob');
-        
-        // Throttled mouse tracking for better performance
-        let ticking = false;
-        
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            if (!ticking) {
-                requestAnimationFrame(updateGradient);
-                ticking = true;
-            }
+        // Rest of scripts for gradient animation only load if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Any additional setup if needed
         });
-        
-        // Lightweight animation
-        function updateGradient() {
-            // Lighter easing for smoother performance
-            const ease = 0.08;
-            currentX += (mouseX - currentX) * ease;
-            currentY += (mouseY - currentY) * ease;
-            
-            // Update gradient blob position
-            if (gradientBlob) {
-                gradientBlob.style.left = currentX + 'px';
-                gradientBlob.style.top = currentY + 'px';
-            }
-            
-            ticking = false;
-        }
-        
-        // Initialize gradient position
-        window.addEventListener('load', () => {
-            if (gradientBlob) {
-                gradientBlob.style.left = mouseX + 'px';
-                gradientBlob.style.top = mouseY + 'px';
-            }
-        });
-
-        if (window.location.pathname.includes('/predictor')) {
-            document.getElementById('root').style.display = 'block';
-            document.body.style.display = 'none';
-        }
-
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === "#") return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    document.querySelectorAll('nav a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                }
-            });
-        });
-
-        (function(){
-            const headerEl = document.getElementById('main-header');
-            const toggleBtn = document.querySelector('.menu-toggle');
-            const navLinks = document.getElementById('primary-nav');
-            if (!headerEl || !toggleBtn || !navLinks) return;
-
-            toggleBtn.addEventListener('click', function(){
-                const isOpen = headerEl.classList.toggle('open');
-                toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-            });
-
-            navLinks.querySelectorAll('a').forEach(a => {
-                a.addEventListener('click', function(){
-                    headerEl.classList.remove('open');
-                    toggleBtn.setAttribute('aria-expanded', 'false');
-                });
-            });
-
-            window.addEventListener('resize', function(){
-                if (window.innerWidth >= 768) {
-                    headerEl.classList.remove('open');
-                    toggleBtn.setAttribute('aria-expanded', 'false');
-                }
-            });
-        })();
     </script>
 </body>
 </html>

@@ -14,15 +14,6 @@ import Predictor from './components/Predictor';
 function App() {
   const pathname = window.location.pathname;
 
-  // Route: Digital Garden
-  if (pathname.includes('/garden')) {
-    return (
-      <div className="app-page app-page--garden">
-        <DigitalGardenContainer />
-      </div>
-    );
-  }
-
   // Route: Predictor
   if (pathname.includes('/predictor')) {
     return (
@@ -32,8 +23,12 @@ function App() {
     );
   }
 
-  // Default: Home page (rendered via static HTML)
-  return null;
+  // Default: Digital Garden as main page
+  return (
+    <div className="app-page app-page--garden">
+      <DigitalGardenContainer />
+    </div>
+  );
 }
 
 export default App;
