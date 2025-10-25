@@ -85,21 +85,342 @@ Dalam LIBS, plasma:
  * @type {Object<string, string>}
  */
 export const SECTION_CONTENTS = {
-  0: `# PENGENALAN\n\n## Apa itu Digital Garden?\n\nSelamat datang di Digital Garden saya. Di sini saya menulis tentang fisika, pembelajaran mesin, dan spektroskopi.\n\nCatatan-catatan saya saling terhubung, membentuk jaringan pengetahuan yang terus berkembang. Saya menggunakan sistem tautan untuk menghubungkan konsep-konsep yang saling berhubungan.\n\n## Filosofi Digital Garden\n\n### Karakteristik Utama\n• Bukan sebuah blog dengan posting final\n• Tempat belajar dan mengeksperimen secara publik\n• Konten terus diperbarui dan diperdalam\n• Fokus pada hubungan antar ide, bukan urutan kronologis`,
-  1: `# SPEKTROSKOPI\n\n## Pengenalan Spektroskopi\n\nSpektroskopi adalah cabang ilmu fisika yang mempelajari interaksi antara radiasi elektromagnetik dan materi.\n\n## Sejarah Perkembangan\n\n### Periode Awal (1600-1800)\nSpektroskopi telah berkembang selama lebih dari dua abad, dimulai dari penelitian Newton tentang prisma cahaya pada tahun 1666.`,
-  2: `# MACHINE LEARNING & PHYSICS\n\n## Introduksi: Dua Paradigma yang Bersatu\n\nMachine Learning (ML) telah merevolusi cara kita melakukan penelitian fisika.\n\n## Mengapa Machine Learning untuk Physics?\n\n### Tantangan Masa Kini\nDalam eksperimen fisika modern, kita menghasilkan volume data yang sangat besar.`,
-  3: `# DEEP LEARNING\n\n## Definisi dan Evolusi\n\nDeep Learning adalah subset dari Machine Learning yang menggunakan artificial neural networks dengan multiple layers.\n\n## Sejarah Perkembangan\n\n### Masa Awal (1950-1960)\nPerjalanan deep learning dimulai dari penelitian awal tentang perceptrons.`,
-  4: `# PLASMA PHYSICS\n\n## Definisi Plasma\n\nPlasma adalah keadaan materi keempat yang terdiri dari ion bermuatan positif, elektron, dan atom netral.\n\n## Karakteristik Fundamental\n\n### Sifat-Sifat Utama Plasma\n• Kemampuan menghantarkan listrik dengan sangat baik\n• Responsif terhadap medan elektromagnetik eksternal`
+  0: `# PENGENALAN
+
+## Selamat Datang di Digital Garden Saya
+
+Selamat datang di Digital Garden saya - sebuah ruang publik untuk berpikir dan belajar tentang fisika, pembelajaran mesin, dan spektroskopi. Di sini saya mendokumentasikan perjalanan intelektual saya, membagikan pemahaman, dan menghubungkan ide-ide yang saling berhubungan.
+
+## Apa itu Digital Garden?
+
+Berbeda dengan blog tradisional yang menerbitkan artikel final dan lengkap, Digital Garden adalah taman yang terus berkembang. Catatan-catatan di sini:
+
+• Tidak pernah benar-benar "selesai" - terus berkembang seiring waktu
+• Berfokus pada proses belajar, bukan hanya hasil akhir
+• Saling terhubung membentuk jaringan pengetahuan
+• Dapat diakses dan dipertanyakan oleh siapa saja
+
+## Filosofi di Balik Digital Garden
+
+Saya percaya bahwa pembelajaran adalah proses yang terus berlanjut. Dengan membagikan pemikiran saya secara publik, saya dapat:
+
+• Memperdalam pemahaman melalui penulisan
+• Mendapatkan umpan balik dari komunitas
+• Membangun kepercayaan dan transparansi
+• Berkontribusi pada pengetahuan bersama
+
+## Cara Menggunakan Digital Garden Ini
+
+Setiap section dalam garden ini adalah topik tersendiri. Anda dapat:
+
+• Membaca konten dalam urutan apapun
+• Mengikuti tautan untuk menjelajahi konsep terkait
+• Membuka "notes" untuk informasi lebih detail
+• Kembali kapan saja untuk melihat perubahan dan pembaruan
+
+Selamat menjelajahi!`,
+  1: `# SPEKTROSKOPI
+
+## Apa itu Spektroskopi?
+
+Spektroskopi adalah cabang ilmu fisika dan kimia yang mempelajari interaksi antara radiasi elektromagnetik dan materi. Melalui spektroskopi, kita dapat mengetahui komposisi, struktur, dan sifat-sifat materi dari cahaya yang dipancarkan, diserap, atau dihamurkan oleh materi tersebut.
+
+## Sejarah dan Perkembangan Spektroskopi
+
+### Era Awal: Newton dan Dispersi Cahaya (1666)
+Isaac Newton adalah salah satu pelopor spektroskopi. Ketika cahaya putih melalui prisma, ia mengamati bahwa cahaya terurai menjadi spektrum warna berbeda. Penemuan ini menunjukkan bahwa cahaya putih sebenarnya terdiri dari berbagai warna dengan panjang gelombang berbeda.
+
+### Era Modern: Analisis Spektral (1800-1900)
+Joseph von Fraunhofer mengamati garis-garis gelap di spektrum matahari (garis Fraunhofer), membuka jalan untuk analisis spektral. Kemudian, Gustav Kirchhoff dan Robert Bunsen mengembangkan spektroskopi emisi, di mana mereka memanaskan elemen untuk melihat cahaya yang dipancarkan.
+
+### Era Kontemporer: Spektroskopi Digital (1950-sekarang)
+Perkembangan teknologi komputer dan detektor memungkinkan spektroskopi berkembang pesat. Sekarang kita memiliki berbagai teknik spektroskopi untuk berbagai aplikasi.
+
+## Prinsip Dasar Spektroskopi
+
+Ketika materi berinteraksi dengan radiasi elektromagnetik, dapat terjadi beberapa hal:
+
+• **Absorpsi**: Materi menyerap foton dan elektron naik ke level energi lebih tinggi
+• **Emisi**: Elektron turun ke level energi lebih rendah dan memancarkan foton
+• **Hamburan**: Foton dibelokkan oleh partikel tanpa mengubah energinya (Rayleigh)
+• **Hamburan Raman**: Foton bertukar energi dengan vibrasi molekuler
+
+## Aplikasi Spektroskopi
+
+Spektroskopi memiliki aplikasi luas di berbagai bidang:
+
+• **Astronomi**: Menentukan komposisi bintang dan galaksi
+• **Kimia Analitik**: Identifikasi dan kuantifikasi elemen dan senyawa
+• **Biologi Medis**: Diagnosis penyakit melalui analisis darah dan jaringan
+• **Ilmu Material**: Karakterisasi sifat fisik dan kimia material
+• **Forensik**: Analisis jejak bukti
+• **Lingkungan**: Monitoring polusi dan kualitas air
+
+## Spektroskopi dalam Penelitian Saya
+
+Fokus penelitian saya adalah pada Laser-Induced Breakdown Spectroscopy (LIBS), sebuah teknik spektroskopi yang menggunakan laser untuk membuat plasma dan menganalisis komposisi sampel. LIBS memiliki keunggulan unik dalam memberikan analisis cepat dan non-invasif.`,
+  2: `# MACHINE LEARNING & PHYSICS
+
+## Penyatuan Dua Paradigma
+
+Machine Learning (ML) telah merevolusi cara kita melakukan penelitian fisika. Di mana fisika tradisional mengandalkan hukum-hukum fundamental dan persamaan diferensial, ML membuka pendekatan baru: belajar dari data.
+
+## Mengapa Machine Learning Penting untuk Physics?
+
+### Tantangan Modern dalam Penelitian Fisika
+
+Di era modern, eksperimen fisika menghasilkan volume data yang sangat besar - seringkali dalam jutaan atau miliaran data points. Analisis manual menjadi tidak praktis, dan pola-pola kompleks mungkin terlewatkan.
+
+Contoh konkret:
+• Detektor CERN menghasilkan petabyte data setiap hari
+• Pengamatan astronomis dari teleskop modern menciptakan data masif
+• Simulasi komputasi fisika menghasilkan keluaran dalam skala besar
+
+### Keuntungan Machine Learning untuk Physics
+
+Machine learning menawarkan beberapa keuntungan signifikan:
+
+• **Pattern Recognition**: ML sangat bagus dalam menemukan pola dalam data kompleks
+• **Prediksi**: Model ML dapat memprediksi hasil eksperimen dengan akurasi tinggi
+• **Optimisasi**: ML dapat menemukan parameter optimal untuk eksperimen
+• **Klasifikasi**: Mengategorikan fenomena fisika ke dalam kelas-kelas yang bermakna
+• **Dimensionality Reduction**: Mengekstrak fitur penting dari data high-dimensional
+
+## Aplikasi ML dalam Fisika Eksperimental
+
+### Spectroscopy Analysis
+Dalam spektroskopi, ML dapat:
+• Mengidentifikasi elemen dari pola spektral
+• Memprediksi konsentrasi dari intensitas spektral
+• Mendeteksi anomali dalam spektra
+• Membersihkan noise dari data spektral
+
+### Particle Physics
+Di fisika partikel, ML digunakan untuk:
+• Rekonstruksi lintasan partikel
+• Identifikasi jenis partikel
+• Filtering sinyal dari background noise
+• Analisis deteksi peristiwa eksperimental
+
+### Climate Modeling
+Dalam pemodelan iklim:
+• Memprediksi pola cuaca dan iklim
+• Menganalisis data satelit
+• Mengoptimalkan model fisika berbasis data
+
+## Framework dan Tools yang Saya Gunakan
+
+• **PyTorch**: Framework deep learning fleksibel untuk penelitian
+• **TensorFlow**: Platform ML komprehensif dengan berbagai tools
+• **Scikit-learn**: Library ML klasik untuk preprocessing dan model sederhana
+• **NumPy/SciPy**: Komputasi numerik dan analisis ilmiah
+• **Pandas**: Manipulasi dan analisis data
+
+## Filosofi: Physics-Informed Machine Learning
+
+Pendekatan terbaik menggabungkan kekuatan keduanya:
+• Gunakan hukum fisika sebagai konstraint dalam model ML
+• Integrasikan pengetahuan domain fisika dalam arsitektur neural network
+• Validasi prediksi ML terhadap prinsip-prinsip fisika fundamental`,
+  3: `# DEEP LEARNING
+
+## Apa itu Deep Learning?
+
+Deep Learning adalah subset dari Machine Learning yang menggunakan artificial neural networks dengan banyak lapisan (depth). "Deep" merujuk pada jumlah lapisan tersembunyi dalam jaringan. Deep learning telah mencapai hasil luar biasa dalam berbagai aplikasi dari computer vision hingga natural language processing.
+
+## Sejarah Deep Learning
+
+### Awal Mula: Perceptron (1957)
+Frank Rosenblatt menciptakan perceptron, model sederhana yang bisa belajar pola linear. Walaupun sederhana, ini adalah fondasi neural networks modern.
+
+### Era Gelap: AI Winter (1970-1980)
+Keterbatasan teknologi dan daya komputasi menyebabkan penelitian neural networks melambat. Perceptron terbukti tidak bisa menyelesaikan masalah XOR, yang mengecewakan komunitas.
+
+### Renaissance: Backpropagation (1986)
+Rumelhart, Hinton, dan Williams merevolusi field dengan menemukan ulang backpropagation - algoritma efisien untuk melatih multi-layer networks. Ini membuka jalan untuk deep learning modern.
+
+### Deep Learning Boom (2012-sekarang)
+Dengan GPU powerful dan dataset besar, deep learning mencapai breakthrough:
+• AlexNet menang ImageNet 2012 dengan margin besar
+• Deep learning menjadi state-of-the-art di banyak tasks
+• Transformers dan attention mechanisms lahir
+• Era modern AI dan large language models
+
+## Arsitektur Deep Learning yang Umum
+
+### Convolutional Neural Networks (CNNs)
+CNN dirancang untuk data yang memiliki struktur grid (seperti gambar). Mereka menggunakan:
+• Convolutional layers untuk extract features
+• Pooling layers untuk dimensionality reduction
+• Fully connected layers untuk classification
+
+CNNs sangat efektif untuk:
+• Computer vision tasks
+• Analisis spektral 2D (seperti dalam LIBS imaging)
+• Pattern recognition dalam data spasial
+
+### Recurrent Neural Networks (RNNs)
+RNNs dirancang untuk data sekuensial. Mereka mempertahankan "hidden state" yang terupdate seiring waktu, memungkinkan mereka untuk:
+• Memproses urutan input variabel panjang
+• Mempertahankan memori jangka panjang (dengan LSTM/GRU)
+• Melakukan tasks seperti time series forecasting
+
+### Transformers dan Attention Mechanism
+Transformers menggunakan attention mechanism untuk:
+• Mengukur relevansi antara elemen berbeda dalam urutan
+• Memproses data secara paralel (lebih efisien dari RNNs)
+• Mencapai state-of-the-art di NLP dan beyond
+
+## Prinsip Pembelajaran dalam Deep Learning
+
+### Forward Pass
+Input melewati jaringan layer per layer:
+1. Setiap neuron melakukan transformasi linear: z = Wx + b
+2. Activation function menambahkan non-linearitas: a = σ(z)
+3. Output dari layer menjadi input layer berikutnya
+4. Final layer menghasilkan prediksi
+
+### Backpropagation
+Setelah prediksi, kita hitung error dan propagate kembali:
+1. Hitung loss (perbedaan antara prediksi dan target)
+2. Hitung gradient loss terhadap semua weights dan biases
+3. Update parameters dalam arah yang mengurangi loss
+4. Repeat dengan batch data baru
+
+### Optimization
+Untuk melatih deep networks dengan efisien:
+• **Gradient Descent**: Update weights ke arah negatif gradient
+• **SGD dengan Momentum**: Mempercepat convergence
+• **Adam**: Adaptive learning rate per parameter
+• **Learning Rate Scheduling**: Mengurangi learning rate seiring waktu
+
+## Tantangan dalam Deep Learning
+
+• **Overfitting**: Model memorize training data, tidak generalize dengan baik
+• **Vanishing Gradients**: Gradient menjadi sangat kecil di layers dalam
+• **Computational Cost**: Melatih large networks membutuhkan resource besar
+• **Data Requirements**: Deep networks butuh dataset besar untuk training
+• **Interpretability**: Sulit memahami apa yang dipelajari model ("black box")
+
+## Teknik Regularisasi
+
+Untuk mengatasi overfitting dan masalah lainnya:
+• **Dropout**: Randomly disable neuron selama training
+• **Batch Normalization**: Normalize input ke setiap layer
+• **L1/L2 Regularization**: Penalty untuk weights besar
+• **Data Augmentation**: Membuat variasi training data
+• **Early Stopping**: Hentikan training ketika validation error meningkat`,
+  4: `# PLASMA PHYSICS
+
+## Keadaan Materi Keempat
+
+Plasma adalah keadaan materi keempat - yang pertama kali dikenalkan oleh Irving Langmuir pada 1923. Sementara keadaan padat, cair, dan gas terdiri dari atom netral dan molekul, plasma terdiri dari ion bermuatan, elektron bebas, dan atom netral.
+
+Plasma ada di mana-mana di alam semesta:
+• 99.9% dari materi terlihat di alam semesta adalah plasma
+• Matahari dan bintang-bintang lainnya adalah plasma
+• Ionosphere bumi adalah plasma
+• Kilat adalah plasma dalam keadaan transien
+
+## Karakteristik Fundamental Plasma
+
+### Sifat Elektrik
+Plasma memiliki sifat elektrik yang unik:
+• **Konduktivitas tinggi**: Plasma menghantarkan listrik dengan sangat baik
+• **Responsif terhadap medan elektromagnetik**: Partikel bermuatan bergerak dalam respon terhadap E dan B fields
+• **Quasi-neutrality**: Secara keseluruhan, plasma netral (jumlah positif = negatif)
+
+### Sifat Kolektif
+Plasma tidak hanya kumpulan partikel independen, tapi menunjukkan perilaku kolektif:
+• **Plasma oscillations**: Osilasi kolektif elektron pada frekuensi plasma
+• **Shielding**: Muatan dalam plasma di-shield oleh awan partikel berlawanan
+• **Collective motion**: Partikel bergerak bersama membentuk struktur (wave, vortex)
+
+## Termodinamika Plasma
+
+### Temperature dan Energy
+Dalam plasma:
+• **Electron temperature** (Te): Biasanya jauh lebih tinggi karena electron lebih ringan
+• **Ion temperature** (Ti): Lebih rendah karena ion lebih berat
+• **Temperature ketidakseimbangan**: Plasma sering tidak dalam equilibrium termal
+
+Energi dalam plasma:
+• Thermal kinetic energy: (3/2)kT per partikel
+• Energi potensial elektrostatis antara partikel bermuatan
+
+### Debye Length dan Plasma Parameter
+**Debye length** (λD) adalah skala di mana plasma effects signifikan:
+λD = √(ε₀kTe / (ne²))
+
+Plasma parameter (Λ) adalah jumlah partikel dalam sphere Debye:
+Λ = (4/3)π n λD³
+
+Untuk sistem menjadi plasma, Λ >> 1 (banyak partikel per Debye sphere)
+
+## Plasma dalam LIBS (Laser-Induced Breakdown Spectroscopy)
+
+### Proses Pembentukan Plasma LIBS
+
+1. **Laser Ablation**: Laser pulse (ns timescale) focus ke sampel
+   - Energi laser diserap oleh atoms di permukaan
+   - Material menguap membentuk vapor column
+
+2. **Breakdown dan Ionization**: Di vapor column
+   - Cascade ionization terjadi
+   - Plasma terbentuk dengan T ~ 10,000 K
+   - Plasma highly non-equilibrium (Te >> Ti)
+
+3. **Plasma Evolution**: Plasma mengalami perubahan dalam waktu
+   - Cooling melalui radiasi
+   - Ekspansi dan cooling adiabatis
+   - Rekombinasi atom dan ion
+
+### Spektrum Emisi Plasma LIBS
+
+Plasma memancarkan cahaya karakteristik:
+• **Atomic lines**: Emisi dari transisi elektronik individual
+• **Ionic lines**: Emisi dari ion yang terionisasi
+• **Continuum**: Radiasi bremsstrahlung dari elektron decelerate
+
+Setiap elemen memiliki "fingerprint" spektral unik, memungkinkan identifikasi komposisi.
+
+## Aplikasi Plasma Physics dalam Penelitian
+
+### Fusion Energy
+Plasma adalah kunci untuk fusion energy - menggabungkan nucleus untuk release energi besar. Tantangan: confining hot plasma untuk cukup lama agar fusion terjadi.
+
+### Industrial Applications
+• **Plasma cutting**: Memotong material dengan energy tinggi
+• **Plasma etching**: Precision manufacturing dalam microelectronics
+• **Plasma spraying**: Coating materials dengan thin layers
+
+### Diagnostik dan Analisis
+• **Spectroscopy**: Menganalisis komposisi melalui emisi cahaya
+• **Ionization**: Membuat ions untuk mass spectrometry
+• **Deposition**: Mengdeposit thin films berkualitas tinggi
+
+## Tantangan dan Peluang
+
+Plasma physics adalah field yang kompleks dengan banyak tantangan:
+• **Pemodelan**: Simulasi plasma penuh sangat demanding secara komputasi
+• **Prediksi**: Perilaku plasma sering chaotic dan sulit diprediksi
+• **Measurement**: Diagnostic plasma complicated dan invasive
+
+Peluang:
+• Machine learning untuk plasma control dan optimization
+• High-performance computing untuk simulation
+• Novel diagnostic techniques dengan laser-based methods`
 };
 
 /**
  * Initial open notes state
+ * Dimulai kosong - user harus klik untuk membuka notes
  * @type {Object<string, Array<string>>}
  */
 export const INITIAL_OPEN_NOTES = {
-  0: ['intro'],
-  1: ['spektroskopi'],
-  2: ['machine-learning'],
-  3: ['deep-learning'],
-  4: ['plasma-physics']
+  0: [],
+  1: [],
+  2: [],
+  3: [],
+  4: []
 };

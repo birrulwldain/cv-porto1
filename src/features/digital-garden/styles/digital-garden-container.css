@@ -13,21 +13,21 @@
 
 @font-face {
   font-family: 'SpecialGothic';
-  src: url('/fonts/SpecialGothic-Regular.ttf') format('truetype');
+  src: url('/public/fonts/SpecialGothic-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'SpecialGothic';
-  src: url('/fonts/SpecialGothic-SemiBold.ttf') format('truetype');
+  src: url('/public/fonts/SpecialGothic-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'SpecialGothic';
-  src: url('/fonts/SpecialGothic-Bold.ttf') format('truetype');
+  src: url('/public/fonts/SpecialGothic-Bold.ttf') format('truetype');
   font-weight: 700;
   font-display: swap;
 }
@@ -92,7 +92,7 @@
   display: flex;
   flex-direction: column;
   background-color: #FFFFFF;
-  border-right: 1px solid #EEEEEE;
+  border-right: 2px solid #333333;
   margin-right: 0;
   
   transition: background-color var(--duration-base) var(--easing-ease-in-out);
